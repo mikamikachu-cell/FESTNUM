@@ -1,0 +1,88 @@
+/* fixation footer */
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+/*  ------------------- */
+
+@font-face {
+    font-family: "crayon";
+    src: url(../font/cf_crayons/CFCrayons-Regular.ttf);
+}
+
+h2, h3, #playtext {
+    font-family: "crayon";
+}
+
+.active {
+    background: #0000001c;
+    font-size: 1.3rem;
+    font-weight: bolder;
+}
+
+.navitem:hover {
+    background: #7c7c7c10;
+}
+
+li {
+    list-style: none;
+}
+
+body a {
+    text-decoration: none;
+    color: black;
+}
+
+/* jeux cigogne */
+
+#play {
+    /* line-height: 310px; */
+    font-size: 5rem;
+    color: #ffffff;
+    opacity: 40%;
+}
+
+.bouton-play {
+    margin-top: 100px;
+}
+
+.bouton-play p {
+    color: brown;
+}
+
+.bouton-play a:hover #playtext {
+    display: block;
+}
+
+#play:hover {
+    color: #ffffff;
+    opacity: 80%;
+}
+
+#cigogne.mirror {
+    transform: scaleX(-1);
+}
+
+#cigogne {
+    position: absolute;
+    margin-top: 80px;
+    top: 0;
+    left: 0;
+    width: 250px;
+    transform: scaleX(1);
+}
+
+#fondBleu {
+    height: 260px;
+    background-image: url(../ressources/fond-cigogne.png);
+    margin-top: -50px;
+}
+
+/* ------------------ */
