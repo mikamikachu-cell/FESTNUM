@@ -1,0 +1,4 @@
+login:
+  message:
+    not_activated: Le compte n'a pas encore été activé
+    email_not_found: Aucun compte avec l'email indiqué n'a été trouvé
