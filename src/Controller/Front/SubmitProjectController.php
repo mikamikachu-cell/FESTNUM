@@ -12,7 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class SubmitProjectController extends AbstractController
 {
     /**
-     * @Route("/{id}/submit", name="submit_project")
+     * @Route("/submit/{id}", name="submit_project")
      */
     public function submit(Request $request, User $user): Response
     {
@@ -40,7 +40,7 @@ class SubmitProjectController extends AbstractController
         ]);
     }
     /**
-     * @Route("/{id}/delete", name="delete_project")
+     * @Route("/delete/{id}", name="delete_project")
      */
     public function delete(Request $request, User $user): Response
     {

@@ -139,7 +139,7 @@ class SecurityController extends AbstractController
                 $user->setConfirmationToken(null);
             }
             $this->getDoctrine()->getManager()->flush();
-            $msg = $this->translator->trans('reset_password.flash.success', [], 'security');
+            $msg = $this->translator->trans('Mot de passe modifié avec succès', [], 'security');
             $this->addFlash('info', $msg);
             return $guardHandler->authenticateUserAndHandleSuccess($user, $request, $authenticator, 'main');
         }
