@@ -3,13 +3,17 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+// use Vich\UploaderBundle\Mapping\Annotation\UploadableField;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity(fields={"email"}, message="un compte avec cette adresse email existe déjà.")
  * @ORM\HasLifecycleCallbacks()
+ * @Vich\Uploadable
  */
 class User implements UserInterface
 {
@@ -55,6 +59,30 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $lastname;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @var string
+     */
+    private $videoTitle;
+
+    /**
+     * @ORM\Column(type="string", length=1048)
+     * @var string
+     */
+    private $videoDescription;
+
+    /**
+     * @Vich\UploadableField(mapping="user_videos", fileNameProperty="video")
+     * @var File
+     */
+    private $videoFile;
+
+    /**
+     * @ORM\Column(type="string", length=1048)
+     * @var string
+     */
+    private $videoFilename;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
@@ -261,6 +289,126 @@ class User implements UserInterface
     public function setUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of video
+     *
+     * @return  string
+     */
+    public function getVideo()
+    {
+        return $this->video;
+    }
+
+    /**
+     * Set the value of video
+     *
+     * @param  string  $video
+     *
+     * @return  self
+     */
+    public function setVideo(string $video)
+    {
+        $this->video = $video;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of videoFile
+     *
+     * @return  File
+     */
+    public function getVideoFile()
+    {
+        return $this->videoFile;
+    }
+
+    /**
+     * Set the value of videoFile
+     *
+     * @param  File  $videoFile
+     *
+     * @return  self
+     */
+    public function setVideoFile(File $videoFile)
+    {
+        $this->videoFile = $videoFile;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of videoTitle
+     *
+     * @return  string
+     */
+    public function getVideoTitle()
+    {
+        return $this->videoTitle;
+    }
+
+    /**
+     * Set the value of videoTitle
+     *
+     * @param  string  $videoTitle
+     *
+     * @return  self
+     */
+    public function setVideoTitle(string $videoTitle)
+    {
+        $this->videoTitle = $videoTitle;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of videoDescription
+     *
+     * @return  string
+     */
+    public function getVideoDescription()
+    {
+        return $this->videoDescription;
+    }
+
+    /**
+     * Set the value of videoDescription
+     *
+     * @param  string  $videoDescription
+     *
+     * @return  self
+     */
+    public function setVideoDescription(string $videoDescription)
+    {
+        $this->videoDescription = $videoDescription;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of videoFilename
+     *
+     * @return  string
+     */
+    public function getVideoFilename()
+    {
+        return $this->videoFilename;
+    }
+
+    /**
+     * Set the value of videoFilename
+     *
+     * @param  string  $videoFilename
+     *
+     * @return  self
+     */
+    public function setVideoFilename(string $videoFilename)
+    {
+        $this->videoFilename = $videoFilename;
 
         return $this;
     }

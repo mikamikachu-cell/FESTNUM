@@ -1,0 +1,44 @@
+{# templates/front/registration/register.html.twig #}
+{% trans_default_domain 'security' %}
+{% extends 'front/layout.html.twig' %}
+
+{% block title %}Soumettre un projet{% endblock %}
+
+{% block content %}
+<section class="pt-4 pb-4">
+    <div class="container">
+        <div class="col-lg-6 mx-auto">
+            <div class="card mt-4 mb-4">
+                {% if app.user %}
+                <h1>USER {{ app.user.id}}</h1>
+                    {% if app.user.videoTitle %}
+                    <h2>test</h2>
+                    <p>Vous avez déjà soumis un projet</p>
+                    <a href="{{ path('delete_project', {id: app.user.id}) }}">supprimer le projet</a>
+                    {% endif %}
+                {{app.user.lastname}}
+                {% endif %}
+                <div class="card-body">
+                    {{ form_start(form) }}
+                    <!-- Les paramètres du formulaire sont définie dans App/Form/Front/UploadVideoFormType.php -->
+                    <h1 class="h3 mb-3 font-weight-normal">Soumettre votre projet</h1>
+                    {{ form_label(form.video_title) }}
+                    {{ form_widget(form.video_title) }}
+                   
+                    {# <input type="file" accept="video/mp4"> #}
+                    {{ form_label(form.video_description) }}
+                    {{ form_widget(form.video_description) }}
+                    {{ form_label(form.video_file) }}
+                    {{ form_widget(form.video_file) }}
+                    <div class="form-group text-center">
+                        <button class="btn btn-primary btn-block" type="submit">
+                        Envoyer
+                        </button>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
