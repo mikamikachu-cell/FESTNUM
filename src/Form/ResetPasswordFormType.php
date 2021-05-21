@@ -19,7 +19,7 @@ class ResetPasswordFormType extends AbstractType
         if (!$options['with_token']) {
             $builder
                 ->add('password', PasswordType::class, [
-                    'label' => 'reset_password.label.current_password',
+                    'label' => 'mot de passe courant',
                     'constraints' => [
                         new NotBlank([
                             'message' => 'registration.message.not_blank',
@@ -31,7 +31,7 @@ class ResetPasswordFormType extends AbstractType
                             'max' => 4096,
                         ]),
                         new UserPassword([
-                            'message' => 'reset_password.message.current_password_wrong',
+                            'message' => 'erreur de mot de passe',
                         ])
                     ],
                 ]);
@@ -39,11 +39,11 @@ class ResetPasswordFormType extends AbstractType
         $builder
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
-                'invalid_message' => 'reset_password.message.repeated_new_password_invalid',
+                'invalid_message' => 'Les mots de passe ne sont pas identiques',
                 'options' => ['attr' => ['class' => 'password-field']],
                 'required' => true,
-                'first_options'  => ['label' => 'reset_password.label.new_password'],
-                'second_options' => ['label' => 'reset_password.label.repeat_new_password'],
+                'first_options'  => ['label' => 'nouveau mot de passe'],
+                'second_options' => ['label' => 'répétez le nouveau mot de passe'],
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
@@ -53,7 +53,7 @@ class ResetPasswordFormType extends AbstractType
                     ]),
                     new Length([
                         'min' => 6,
-                        'minMessage' => 'registration.message.password_length_min',
+                        'minMessage' => 'Le mot de passe doit faire au minimum 6 caractères',
                         // max length allowed by Symfony for security reasons
                         'max' => 4096,
                     ]),

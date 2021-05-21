@@ -201,16 +201,16 @@
                     </li>
                     {% else %}
                     <li class="dropdown-item">
-                        <a href="#">
+                        <a href="{{ path('profile') }}">
                             <i class="fas fa-user-cog"></i> Mon profil
                         </a>
                     </li>
                     {% endif %}
-                    <li class="dropdown-item{{ route == 'app_reset_password' ? ' active' }}">
+                    {# <li class="dropdown-item{{ route == 'app_reset_password' ? ' active' }}">
                         <a href="{{ path('app_reset_password', { 'id': app.user.id }) }}">
                             <i class="fas fa-key"></i> Modifier mon mot de passe
                         </a>
-                    </li>
+                    </li> #}
                     <li class="dropdown-item">
                         <a href="{{ path('app_logout') }}">
                             <i class="fas fa-sign-out-alt"></i> Me déconnecter

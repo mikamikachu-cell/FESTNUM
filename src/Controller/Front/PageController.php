@@ -14,4 +14,12 @@ class PageController extends AbstractController
     {
         return $this->render('front/page/index.html.twig', []);
     }
+
+    /**
+     * @Route("/profile", name="profile")
+     */
+    public function profile()
+    {
+        return $this->render('front/page/profile.html.twig', []);
+    }
 }

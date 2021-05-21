@@ -1,0 +1,14 @@
+{% extends 'front/layout.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+    {% if app.user %}
+    Vous êtes connecté en tant que 
+    {{app.user.firstname}}
+    {{app.user.lastname}}
+    <a href="{{ path('app_reset_password', { 'id': app.user.id }) }}">Modifier mon mot de passe</a>
+    {% else %}
+    <a href="{{ path('app_login') }}">Connectez-vous</a> ou <a href="{{ path('front_register') }}">Créez un compte</a>
+    {% endif %}
+{% endblock %}
