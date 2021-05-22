@@ -16,7 +16,7 @@ class PageController extends AbstractController
     }
 
     /**
-     * @Route("/profile", name="profile")
+     * @Route("/profile", name="front_profile")
      */
     public function profile()
     {

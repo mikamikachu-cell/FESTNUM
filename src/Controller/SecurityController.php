@@ -86,28 +86,29 @@ class SecurityController extends AbstractController
         );
     }
 
-    /**
-     * @Route("/forget_password", name="app_forget_password")
-     */
-    public function forgetPassword(Request $request, UserRepository $userRepository, Mailer $mailer): Response
-    {
-        $form = $this->createForm(ForgetPasswordFormType::class);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $user = $userRepository->findOneByEmail($form->get('email')->getData());
-            if ($user) {
-                $user->setConfirmationToken(random_bytes(24));
-                $this->getDoctrine()->getManager()->flush();
-                $mailer->sendForgetPassword($user);
-                $msg = $this->translator->trans('forget_password.flash.check_email', ['%user%' => $user,], 'security');
-                $this->addFlash('success', $msg);
-            }
-            return $this->redirectToRoute('front_home');
-        }
-        return $this->render('security/forget_password.html.twig', [
-            'form' => $form->createView(),
-        ]);
-    }
+    // TODO : Fonction mot de passe oublié. Il faudra faire un ForgetPasswordFormType
+    // /**
+    //  * @Route("/forget_password", name="app_forget_password")
+    //  */
+    // public function forgetPassword(Request $request, UserRepository $userRepository, Mailer $mailer): Response
+    // {
+    //     $form = $this->createForm(ForgetPasswordFormType::class);
+    //     $form->handleRequest($request);
+    //     if ($form->isSubmitted() && $form->isValid()) {
+    //         $user = $userRepository->findOneByEmail($form->get('email')->getData());
+    //         if ($user) {
+    //             $user->setConfirmationToken(random_bytes(24));
+    //             $this->getDoctrine()->getManager()->flush();
+    //             $mailer->sendForgetPassword($user);
+    //             $msg = $this->translator->trans('forget_password.flash.check_email', ['%user%' => $user,], 'security');
+    //             $this->addFlash('success', $msg);
+    //         }
+    //         return $this->redirectToRoute('front_home');
+    //     }
+    //     return $this->render('security/forget_password.html.twig', [
+    //         'form' => $form->createView(),
+    //     ]);
+    // }
 
     /**
      * @Route("/reset_password/{id}", defaults={"id"=null}, name="app_reset_password")

@@ -11,7 +11,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @UniqueEntity(fields={"email"}, message="un compte avec cette adresse email existe déjà.")
+ * @UniqueEntity(fields={"email"}, message="Un compte avec cette adresse existe déjà.")
  * @ORM\HasLifecycleCallbacks()
  * @Vich\Uploadable
  */
