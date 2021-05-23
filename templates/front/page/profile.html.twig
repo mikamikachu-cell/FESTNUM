@@ -19,6 +19,13 @@
    
     
     {% else %}
-    <a href="{{ path('app_login') }}">Connectez-vous</a> ou <a href="{{ path('front_register') }}">Créez un compte</a>
-    {% endif %}
+    <div class="container">
+      <div class="card w-75">
+          <div class="card-body">
+            <h1 class="card-title text-center">Mon profil</h1>
+            <a href="{{ path('app_login') }}">Connectez-vous</a> ou <a href="{{ path('front_register') }}">Créez un compte</a>
+          </div>
+      </div>
+  </div>
+  {% endif %}
 {% endblock %}

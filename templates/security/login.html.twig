@@ -2,13 +2,13 @@
 {% trans_default_domain 'security' %}
 {% extends 'front/layout.html.twig' %}
 
-{% block title %}{{ 'login.title'|trans() }}{% endblock %}
+{% block title %}Authentification{% endblock %}
 
 {% block content %}
 <section class="pt-4 pb-4">
     <div class="container">
         {% if error %}
-        <!-- Message d'erreur si la connexion échoue -->
+        {# Message d'erreur si la connexion échoue #}
         <div class="fadeInDown animated">
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
         </div>
@@ -18,7 +18,7 @@
                 <div class="card-body">
                     <form method="post">
                         {% if app.user %}
-                        <!-- Devrait rediriger vers mon compte -->
+                        {# Si l'utilisateur est connecté #}
                         <div class="mb-3">
                             <p>
                                 Vous êtes déjà connecté en tant que {{ app.user }}.
@@ -28,18 +28,19 @@
                             </p>
                         </div>
                         {% else %}
+                        {# Sinon, formulaire d'authentification #}
                         <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
-                        <label for="inputEmail" class="sr-only">email</label>
-                        <input type="email" value="{{ last_username }}" name="email" id="inputEmail"
-                            class="form-control mb-2" placeholder="exemple@email.fr" required>
-                        <label for="inputPassword" class="sr-only">mot de passe</label>
-                        <input type="password" name="password" id="inputPassword" class="form-control"
-                            placeholder="••••••••••••" required>
-
+                        <label for="inputEmail" class="form-label">email</label>
+                        <input type="email" name="email" id="inputEmail"
+                            class="form-control mb-2" required>
+                        <label for="inputPassword" class="form-label">mot de passe</label>
+                        <input type="password" name="password" id="inputPassword" 
+                            class="form-control mb-2" required>
+                        {# Champs caché token d'authentification #}
                         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
                         <div class="checkbox mb-3">
                             <label>
-                                <input type="checkbox" name="_remember_me">se souvenir de moi
+                                <input type="checkbox" name="_remember_me"> se souvenir de moi
                             </label>
                         </div>
                         <div class="form-group text-center">
@@ -55,8 +56,9 @@
                                     de passe oublié</a>
                             </div> #}
                             <div class="col-sm-6">
-                                <a href="{{ path('front_register')}}"
-                                    class="btn btn-default btn-block btn-sm">S'enregistrer</a>
+                                <p>
+                                    Si vous n'avez pas de compte <a href="{{ path('front_register')}}" class="btn btn-outline-primary btn-block btn-sm">Créez un compte</a>
+                                </p>
                             </div>
                         </div>
                         {% endif %}

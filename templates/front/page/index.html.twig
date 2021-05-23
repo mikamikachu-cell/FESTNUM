@@ -1,20 +1,15 @@
-{# templates/front/page/index.html.twig #}
 {% extends 'front/layout.html.twig' %}
 
-{% block title %}accueil{% endblock %}
+{% block title %}Accueil{% endblock %}
 
 {% block content %}
-{# <p>Page d'accueil front</p> #}
-{# <p>{{ app.user.lastLoginAt|date() }}</p> #}
 <div class="row banniere d-block d-md-none">
-    {# <video class="col-12 px-0" src="../../../public/ressources/banniere_cigogne.mp4" autoplay muted loop></video> #}
     <video class="col-12 px-0" src="{{ asset('ressources/banniere_cigogne.mp4') }}" autoplay muted loop></video>
 </div>
 
 <main class="container">
 
     <div class="row titre pb-1">
-        {# <img class="col-6 offset-3 mt-3" src="../../../public/ressources/titre_festnum.png" alt="titre"> #}
         <img class="col-6 offset-3 mt-3" src="{{ asset('ressources/logo_festnum_v1.png') }}" alt="titre">
     </div>
     <div class="text-center ">

@@ -3,6 +3,49 @@
     <img src="{{ asset('ressources/avatar_nicolas.PNG') }}" alt="" srcset="">
 </nav> #}
 
+ <nav class="navbar bg-light d-none d-md-block">
+    <div class="container">
+        <img src="{{ asset('ressources/logo-f.png') }}" alt="logo">
+        <a href="accueil.html">Accueil</a>
+        <a href="video.html">Vidéos</a>
+        <a href="contact.html">Contact</a>
+        <a href="jury.html">Jury</a>
+        <a href="archive.html">Archives</a>
+        <a href="prix.html">prix du festival</a>
+        <div class="dropdown">
+            <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                Mon compte
+            </a>
+            {% if app.user %}
+            <!-- Si utilisateur connecté -->
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <li>
+                    <a class="dropdown-item" href="{{ path('front_profile') }}">
+                        <i class="fas fa-user"></i> Mon profil
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="{{ path('submit_project', {id: app.user.id}) }}">
+                        <i class="fas fa-file-upload"></i> Soumettre mon film
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="{{ path('app_logout') }}">
+                        <i class="fas fa-sign-out-alt"></i> Me déconnecter
+                    </a>
+                </li>
+            </ul>
+            {% else %}
+            <!-- Si utilisateur non connecté -->
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <li><a class="dropdown-item" href="{{ path('app_login') }}">Me connecter</a></li>
+                <li><a class="dropdown-item" href="{{ path('front_register') }}">M'enregistrer</a></li>
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+
 
 {# NAVBAR avec un seul onglet 'Mon compte' : pour le développement des fonctionnalités back par Alexis #}
 <div class="navbar navbar-expand-md navbar-dark bg-dark mb-4" role="navigation">
@@ -16,6 +59,35 @@
             <li class="nav-item{# {{ route == 'front_home' ? ' active' }}#}">
                 <a class="nav-link" href="{{ path('front_home') }}">Home</a>
             </li>
+
+            <div class="dropdown">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                    Mon compte
+                </a>
+                {% if app.user %}
+                <!-- Si utilisateur connecté -->
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <li>
+                        <a class="dropdown-item" href="{{ path('front_profile') }}">
+                            <i class="fas fa-user"></i> Mon profil
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="{{ path('app_logout') }}">
+                            <i class="fas fa-sign-out-alt"></i> Me déconnecter
+                        </a>
+                    </li>
+                </ul>
+                {% else %}
+                <!-- Si utilisateur non connecté -->
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <li><a class="dropdown-item" href="{{ path('app_login') }}">Me connecter</a></li>
+                    <li><a class="dropdown-item" href="{{ path('front_register') }}">M'enregistrer</a></li>
+                </ul>
+                {% endif %}
+              </div>
+
+
 
             {% if app.user %}
             <!-- Si utilisateur connecté -->

@@ -35,7 +35,7 @@ class SubmitProjectController extends AbstractController
             return $this->redirectToRoute('front_home');
         }
         // Le formulaire doit être affiché (première étape)
-        return $this->render('front/submit_project/submit.html.twig', [
+        return $this->render('front/page/submit.html.twig', [
             'form' => $form->createView(),
         ]);
     }
