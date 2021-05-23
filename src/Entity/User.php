@@ -61,28 +61,38 @@ class User implements UserInterface
     private $lastname;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @var string
+     * @ORM\Column(type="boolean")
      */
-    private $videoTitle;
+    private $hasVideo;
 
     /**
-     * @ORM\Column(type="string", length=1048)
-     * @var string
+     * @ORM\Column(type="integer", length=255, nullable=true)
      */
-    private $videoDescription;
+    private $videoId;
 
-    /**
-     * @Vich\UploadableField(mapping="user_videos", fileNameProperty="video")
-     * @var File
-     */
-    private $videoFile;
+    // /**
+    //  * @ORM\Column(type="string", length=255)
+    //  * @var string
+    //  */
+    // private $videoTitle;
 
-    /**
-     * @ORM\Column(type="string", length=1048)
-     * @var string
-     */
-    private $videoFilename;
+    // /**
+    //  * @ORM\Column(type="string", length=1048)
+    //  * @var string
+    //  */
+    // private $videoDescription;
+
+    // /**
+    //  * @Vich\UploadableField(mapping="user_videos", fileNameProperty="video")
+    //  * @var File
+    //  */
+    // private $videoFile;
+
+    // /**
+    //  * @ORM\Column(type="string", length=1048)
+    //  * @var string
+    //  */
+    // private $videoFilename;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
@@ -293,122 +303,26 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * Get the value of video
-     *
-     * @return  string
-     */
-    public function getVideo()
+    public function getHasVideo()
     {
-        return $this->video;
+        return $this->hasVideo;
     }
 
-    /**
-     * Set the value of video
-     *
-     * @param  string  $video
-     *
-     * @return  self
-     */
-    public function setVideo(string $video)
+    public function setHasVideo($hasVideo)
     {
-        $this->video = $video;
+        $this->hasVideo = $hasVideo;
 
         return $this;
     }
 
-    /**
-     * Get the value of videoFile
-     *
-     * @return  File
-     */
-    public function getVideoFile()
+    public function getVideoId()
     {
-        return $this->videoFile;
+        return $this->videoId;
     }
 
-    /**
-     * Set the value of videoFile
-     *
-     * @param  File  $videoFile
-     *
-     * @return  self
-     */
-    public function setVideoFile(File $videoFile)
+    public function setVideoId($videoId)
     {
-        $this->videoFile = $videoFile;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of videoTitle
-     *
-     * @return  string
-     */
-    public function getVideoTitle()
-    {
-        return $this->videoTitle;
-    }
-
-    /**
-     * Set the value of videoTitle
-     *
-     * @param  string  $videoTitle
-     *
-     * @return  self
-     */
-    public function setVideoTitle(string $videoTitle)
-    {
-        $this->videoTitle = $videoTitle;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of videoDescription
-     *
-     * @return  string
-     */
-    public function getVideoDescription()
-    {
-        return $this->videoDescription;
-    }
-
-    /**
-     * Set the value of videoDescription
-     *
-     * @param  string  $videoDescription
-     *
-     * @return  self
-     */
-    public function setVideoDescription(string $videoDescription)
-    {
-        $this->videoDescription = $videoDescription;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of videoFilename
-     *
-     * @return  string
-     */
-    public function getVideoFilename()
-    {
-        return $this->videoFilename;
-    }
-
-    /**
-     * Set the value of videoFilename
-     *
-     * @param  string  $videoFilename
-     *
-     * @return  self
-     */
-    public function setVideoFilename(string $videoFilename)
-    {
-        $this->videoFilename = $videoFilename;
+        $this->videoId = $videoId;
 
         return $this;
     }

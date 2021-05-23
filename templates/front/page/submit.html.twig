@@ -1,5 +1,3 @@
-{# templates/front/registration/register.html.twig #}
-{% trans_default_domain 'security' %}
 {% extends 'front/layout.html.twig' %}
 
 {% block title %}Soumettre un projet{% endblock %}
@@ -12,7 +10,7 @@
                 {% if app.user %}
                     {# Si l'utilisateur est connecté #}
                     <h1 class="text-center">Soumettez votre film</h1>
-                    {% if app.user.videoTitle %}
+                    {% if app.user.hasVideo %}
                         {# Si l'utilisateur a déjà soumis un projet #}
                         <div class="card text-dark bg-warning mb-3 m-auto" style="max-width: 18rem;">
                             <div class="card-header fw-bold">Un seul projet par session</div>
@@ -26,12 +24,12 @@
                         <div class="card-body">
                             {{ form_start(form) }}
                             {# note : Les paramètres du formulaire sont définie dans App/Form/Front/UploadVideoFormType.php #}
-                            {{ form_label(form.video_title, null, { 'label_attr': {'class': 'form-label'} }) }}
-                            {{ form_widget(form.video_title, { 'attr': {'class': 'form-control mb-3'} }) }}
-                            {{ form_label(form.video_description, null, { 'label_attr': {'class': 'form-label'} }) }}
-                            {{ form_widget(form.video_description, { 'attr': {'class': 'form-control mb-3'} }) }}
-                            {{ form_label(form.video_file, null, { 'label_attr': {'class': 'form-label'} }) }}
-                            {{ form_widget(form.video_file, { 'attr': {'class': 'form-control mb-3'} }) }}     
+                            {{ form_label(form.title, null, { 'label_attr': {'class': 'form-label'} }) }}
+                            {{ form_widget(form.title, { 'attr': {'class': 'form-control mb-3'} }) }}
+                            {{ form_label(form.description, null, { 'label_attr': {'class': 'form-label'} }) }}
+                            {{ form_widget(form.description, { 'attr': {'class': 'form-control mb-3'} }) }}
+                            {{ form_label(form.file, null, { 'label_attr': {'class': 'form-label'} }) }}
+                            {{ form_widget(form.file, { 'attr': {'class': 'form-control mb-3'} }) }}     
                             {# <input type="file" accept="video/mp4"> #}
                             <div class="form-group text-center">
                                 <button class="btn btn-primary btn-block" type="submit">
@@ -42,13 +40,11 @@
                         </div>
                     {% endif %}
                 {% else %}
-                {# Si l'utilisateur n'est pas connecté #}
-
-                        <h1 class="text-center">Soumettez votre film</h1>
-                        <p class="text-center">
-                            <a href="{{ path('app_login') }}">Connectez-vous</a> ou <a href="{{ path('front_register') }}">créez un compte</a> pour participer
-                        </p>
-
+                    {# Si l'utilisateur n'est pas connecté #}
+                    <h1 class="text-center">Soumettez votre film</h1>
+                    <p class="text-center">
+                        <a href="{{ path('app_login') }}">Connectez-vous</a> ou <a href="{{ path('front_register') }}">créez un compte</a> pour participer
+                    </p>
                 {% endif %}
             </div>
         </div>

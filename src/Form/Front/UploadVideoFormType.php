@@ -3,7 +3,9 @@
 namespace App\Form\Front;
 
 use App\Entity\User;
+use App\Entity\Video;
 use Symfony\Component\Form\AbstractType;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -15,28 +17,24 @@ class UploadVideoFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('video_title', TextType::class, [
+            ->add('title', TextType::class, [
                 'label' => 'titre',
             ])
-            ->add('video_description', TextType::class, [
+            ->add('description', TextType::class, [
                 'label' => 'description',
             ])
-            ->add('video_file', FileType::class, [
+            ->add('file', VichFileType::class, [
                 'label' => 'video',
                 'attr' => [
-                    'accept' => 'video/*'
+                    'accept' => 'image/*'
                 ]
             ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        // $resolver->setDefaults([
-        //     'data_class' => User::class,
-        //     'translation_domain' => 'security',
-        // ]);
         $resolver->setDefaults([
-            'data_class' => User::class,
+            'data_class' => Video::class,
         ]);
     }
 }

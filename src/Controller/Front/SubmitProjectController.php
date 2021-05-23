@@ -3,6 +3,7 @@
 namespace App\Controller\Front;
 
 use App\Entity\User;
+use App\Entity\Video;
 use App\Form\Front\UploadVideoFormType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,15 +19,22 @@ class SubmitProjectController extends AbstractController
     {
         $form = $this->createForm(UploadVideoFormType::class);
         $form->handleRequest($request);
-
         // Le formulaire a été soumis (deuxième étape)
         if ($form->isSubmitted() && $form->isValid()) {
-            // Récupération infos video transmise
-            $user->setVideoTitle($request->request->get('upload_video_form')['video_title']);
-            $user->setVideoDescription($request->request->get('upload_video_form')['video_description']);
-            $user->setVideoFilename($request->files->get('upload_video_form')['video_file']->getFilename());
-            // Enregistrement en BDD
             $entityManager = $this->getDoctrine()->getManager();
+
+            // Récupération données Video transmise et enregistrement en BDD
+            $video = new Video();
+            $video->setTitle($request->request->get('upload_video_form')['title']);
+            $video->setDescription($request->request->get('upload_video_form')['description']);
+            // $video->setFilename($request->files->get('upload_video_form')['file']->getFilename());
+            $video->setFilename($request->files->get('upload_video_form')['file']['file']->getFilename());
+            $entityManager->persist($video);
+            $entityManager->flush();
+
+            // Changement données User et enregistrement en BDD
+            $user->setHasVideo(true);
+            $user->setVideoId($video->getId());
             $entityManager->persist($user);
             $entityManager->flush();
 
@@ -44,16 +52,19 @@ class SubmitProjectController extends AbstractController
      */
     public function delete(Request $request, User $user): Response
     {
-        $user->setVideoTitle('');
-        $user->setVideoDescription('');
-        $user->setVideoFilename('');
+        $em = $this->getDoctrine()->getManager();
+        $videoId = $user->getVideoId();
 
-        $entityManager = $this->getDoctrine()->getManager();
-        $entityManager->persist($user);
-        $entityManager->flush();
+        $user->setHasVideo(false);
+        $user->setVideoId(null);
+        $em->persist($user);
+        $em->flush();
 
-        $msg = 'Projet supprimé';
-        $this->addFlash('info', $msg);
+
+        $video = $em->getRepository('App:Video')->find($videoId);
+        $em->remove($video);
+        $em->flush();
+
         return $this->redirectToRoute('submit_project', array(
             'id' => $user->getId()
         ));
