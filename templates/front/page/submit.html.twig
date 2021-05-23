@@ -6,19 +6,23 @@
 <section class="pt-4 pb-4">
     <div class="container">
         <div class="col-lg-6 mx-auto">
-            <div class="card mt-4 mb-4 position-relative">
                 {% if app.user %}
                     {# Si l'utilisateur est connecté #}
                     <h1 class="text-center">Soumettez votre film</h1>
                     {% if app.user.hasVideo %}
                         {# Si l'utilisateur a déjà soumis un projet #}
-                        <div class="card text-dark bg-warning mb-3 m-auto" style="max-width: 18rem;">
-                            <div class="card-header fw-bold">Un seul projet par session</div>
+                    
+                        <p class=" text-danger"><i class="fas fa-exclamation-circle"></i> Vous avez déjà soumis un film.</p>
+                        <p>Vous ne pouvez proposer qu'un film par session.</p>
+                        <p>Pour continuer, supprimez le projet précédent.</p>
+                        <div class="card mb-3" style="max-width: 18rem;">
+                            <div class="card-header fw-bold">Projet précédent</div>
                             <div class="card-body">
-                              <p class="card-text"><i class="fas fa-exclamation-circle text-danger"></i> Vous avez déjà soumis un film.<p>
-                              <p class="card-text">Pour en proposer un nouveau, <a href="{{ path('delete_project', {id: app.user.id}) }}">supprimez le projet précédent</a></p>
+                              <p class="card-text">titre : {{ videoFile.title }}</p>
+                              <p class="card-text">description : {{ videoFile.description }}</p>
+                              <a href="{{ path('delete_project', {id: app.user.id}) }}" class="btn btn-danger">Supprimer</a>
                             </div>
-                          </div>
+                        </div>
                     {% else %}
                         {# Si l'utilisateur n'a pas encore soumis de projet #}
                         <div class="card-body">
@@ -47,7 +51,6 @@
                     </p>
                 {% endif %}
             </div>
-        </div>
     </div>
 </section>
 {% endblock %}

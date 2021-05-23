@@ -19,11 +19,13 @@ class SubmitProjectController extends AbstractController
     {
         $form = $this->createForm(UploadVideoFormType::class);
         $form->handleRequest($request);
-        // Le formulaire a été soumis (deuxième étape)
+
+        /* Le formulaire a été soumis (deuxième étape) : 
+           enregistrement des données et redirection    */
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
 
-            // Récupération données Video transmise et enregistrement en BDD
+            // Récupération des données depuis le formulaire et enregistrement en BDD
             $video = new Video();
             $video->setTitle($request->request->get('upload_video_form')['title']);
             $video->setDescription($request->request->get('upload_video_form')['description']);
@@ -32,7 +34,7 @@ class SubmitProjectController extends AbstractController
             $entityManager->persist($video);
             $entityManager->flush();
 
-            // Changement données User et enregistrement en BDD
+            // Changement données de User et enregistrement en BDD
             $user->setHasVideo(true);
             $user->setVideoId($video->getId());
             $entityManager->persist($user);
@@ -42,10 +44,21 @@ class SubmitProjectController extends AbstractController
             $this->addFlash('info', $msg);
             return $this->redirectToRoute('front_home');
         }
-        // Le formulaire doit être affiché (première étape)
-        return $this->render('front/page/submit.html.twig', [
-            'form' => $form->createView(),
-        ]);
+
+        /* Le formulaire doit être affiché (première étape)
+           Récupération des données s'il y'en a et affichage */
+        if ($user->getHasVideo() == true) {
+            $videoRepo = $this->getDoctrine()->getRepository(Video::class);
+            $video = $videoRepo->find($user->getVideoId());
+            return $this->render('front/page/submit.html.twig', [
+                'form' => $form->createView(),
+                'videoFile' => $video,
+            ]);
+        } else {
+            return $this->render('front/page/submit.html.twig', [
+                'form' => $form->createView(),
+            ]);
+        }
     }
     /**
      * @Route("/delete/{id}", name="delete_project")
