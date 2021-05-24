@@ -19,19 +19,18 @@ class ResetPasswordFormType extends AbstractType
         if (!$options['with_token']) {
             $builder
                 ->add('password', PasswordType::class, [
-                    'label' => 'mot de passe courant',
+                    'label' => 'Mot de passe courant',
                     'constraints' => [
                         new NotBlank([
-                            'message' => 'registration.message.not_blank',
+                            'message' => 'Ce champ ne peut être vide',
                         ]),
                         new Length([
                             'min' => 6,
-                            'minMessage' => 'registration.message.password_length_min',
-                            // max length allowed by Symfony for security reasons
-                            'max' => 4096,
+                            'minMessage' => 'Le mot de passe doit faire au minimum 6 caractères',
+                            'max' => 4096, // max length allowed by Symfony for security reasons
                         ]),
                         new UserPassword([
-                            'message' => 'erreur de mot de passe',
+                            'message' => 'Erreur de mot de passe',
                         ])
                     ],
                 ]);
@@ -40,16 +39,16 @@ class ResetPasswordFormType extends AbstractType
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Les mots de passe ne sont pas identiques',
-                'options' => ['attr' => ['class' => 'password-field']],
+                'options' => ['attr' => ['class' => 'form-control mb-3']],
                 'required' => true,
-                'first_options'  => ['label' => 'nouveau mot de passe'],
-                'second_options' => ['label' => 'répétez le nouveau mot de passe'],
+                'first_options'  => ['label' => 'Nouveau mot de passe'],
+                'second_options' => ['label' => 'Répétez le nouveau mot de passe'],
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'registration.message.password_not_blank',
+                        'message' => 'Ce champ ne peut être vide',
                     ]),
                     new Length([
                         'min' => 6,
