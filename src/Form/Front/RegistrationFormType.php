@@ -21,30 +21,30 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class, [
-                'label' => 'adresse email',
+                'label' => 'Email',
                 'attr' => [
                     'placeholder' => 'exemple@exemple.fr'
                 ]
             ])
             ->add('firstname', TextType::class, [
-                'label' => 'prénom',
+                'label' => 'Prénom',
             ])
             ->add('lastname', TextType::class, [
-                'label' => 'nom',
+                'label' => 'Nom',
             ])
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Le contenu des deux champs doit être identique',
                 'options' => ['attr' => ['class' => 'form-control']], // password-field 
                 'required' => true,
-                'first_options'  => ['label' => 'mot de passe'],
-                'second_options' => ['label' => 'confirmez le mot de passe'],
+                'first_options'  => ['label' => 'Mot de passe'],
+                'second_options' => ['label' => 'Confirmez le mot de passe'],
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Ce champs ne peut pas être vide',
+                        'message' => 'Ce champ ne peut pas être vide',
                     ]),
                     new Length([
                         'min' => 6,

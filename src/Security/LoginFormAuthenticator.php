@@ -74,12 +74,11 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 
         if (!$user) {
             // fail authentication with a custom error
-            // throw new CustomUserMessageAuthenticationException($this->translator->trans('login.message.email_not_found', [], 'security'));
             throw new CustomUserMessageAuthenticationException('Aucun compte avec l\'email indiqué n\'a été trouvé');
         }
 
         if (!$user->isEnabled()) {
-            // throw new CustomUserMessageAuthenticationException($this->translator->trans('login.message.not_activated', [], null, 'fr'));
+            // fail account not enabled with a custom error
             throw new CustomUserMessageAuthenticationException('Compte en attente d\'activation');
         }
 

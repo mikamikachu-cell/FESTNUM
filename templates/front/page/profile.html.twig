@@ -1,16 +1,19 @@
 {% extends 'front/layout.html.twig' %}
 
-{% block title %}{% endblock %}
+{% block title %}Festnum | Profil{% endblock %}
 
 {% block content %}
 <section class="pt-4 pb-4">
   <div class="container">
     <div class="col-lg-6 mx-auto">
+      <h2 class="text-center">Mon profil</h2>
 
       {% if app.user %}
-      <h2 class="text-center">Mon profil</h2>
       <div class="card mb-3 m-auto w-75">
-        <div class="card-header fw-bold text-center">{{ app.user.lastname }} {{ app.user.firstname }}</div>
+        <div class="card-header fw-bold text-center">
+          <span style="text-transform: capitalize;">{{ app.user.firstname }}</span>
+          <span style="text-transform: uppercase;">{{ app.user.lastname }}</span>
+        </div>
         <div class="card-body">
           <p class="card-text"> Email : {{app.user.email}}</p>
           <p class="card-text"> Dernière connexion le : {{app.user.lastLoginAt|date("d/m/Y") }}</p>
@@ -19,15 +22,12 @@
             passe</a>
         </div>
       </div>
-
       {% else %}
-      <div class="container">
-        <div class="card w-75">
-          <div class="card-body">
-            <h1 class="card-title text-center">Mon profil</h1>
-            <a href="{{ path('app_login') }}">Connectez-vous</a> ou <a href="{{ path('front_register') }}">Créez un
-              compte</a>
-          </div>
+      <div class="card mb-3 m-auto w-75">
+        <div class="card-body">
+          <a href="{{ path('app_login') }}" class="link-primary">Connectez-vous</a> ou
+          <a href="{{ path('front_register') }}" class="link-primary">Créez un compte</a>
+
         </div>
       </div>
       {% endif %}

@@ -2,7 +2,7 @@
 {% trans_default_domain 'security' %}
 {% extends 'front/layout.html.twig' %}
 
-{% block title %}Authentification{% endblock %}
+{% block title %}Festnum | Authentification{% endblock %}
 
 {% block content %}
 <section class="pt-4 pb-4">
@@ -24,18 +24,16 @@
                                 Vous êtes déjà connecté en tant que {{ app.user }}.
                             </p>
                             <p>
-                                <a href="{{ path('app_logout') }}">Se déconnecter</a>
+                                <a href="{{ path('app_logout') }}" class="btn btn-primary">Se déconnecter</a>
                             </p>
                         </div>
                         {% else %}
                         {# Sinon, formulaire d'authentification #}
                         <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
                         <label for="inputEmail" class="form-label">email</label>
-                        <input type="email" name="email" id="inputEmail"
-                            class="form-control mb-2" required>
+                        <input type="email" name="email" id="inputEmail" class="form-control mb-2" required>
                         <label for="inputPassword" class="form-label">mot de passe</label>
-                        <input type="password" name="password" id="inputPassword" 
-                            class="form-control mb-2" required>
+                        <input type="password" name="password" id="inputPassword" class="form-control mb-2" required>
                         {# Champs caché token d'authentification #}
                         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
                         <div class="checkbox mb-3">
@@ -57,7 +55,8 @@
                             </div> #}
                             <div class="col-sm-6">
                                 <p>
-                                    Si vous n'avez pas de compte <a href="{{ path('front_register')}}" class="btn btn-outline-primary btn-block btn-sm">Créez un compte</a>
+                                    Si vous n'avez pas de compte <a href="{{ path('front_register')}}"
+                                        class="btn btn-outline-primary btn-block btn-sm">Créez un compte</a>
                                 </p>
                             </div>
                         </div>

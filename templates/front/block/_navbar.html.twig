@@ -6,7 +6,9 @@
 {# NAVBAR ÉCRAN LARGE #}
 <nav class="navbar bg-light d-none d-md-block">
     <div class="container">
-        <img src="{{ asset('ressources/logo-f.png') }}" alt="logo">
+        <a href="{{ path('front_home') }}">
+            <img src="{{ asset('ressources/logo-f.png') }}" alt="logo">
+        </a>
         <a href="{{ path('front_home') }}">Accueil</a>
         {# <a href="{{ path('front_videos') }}">Vidéos</a> #}
         <a href="{{ path('front_contact') }}">Contact</a>

@@ -1,17 +1,17 @@
 {% extends 'front/layout.html.twig' %}
 
-{% block title %}Soumettre un projet{% endblock %}
+{% block title %}Festnum | Soumettre un projet{% endblock %}
 
 {% block content %}
 <section class="pt-4 pb-4">
     <div class="container">
         <div class="col-lg-6 mx-auto">
+            <h2 class="text-center">Soumettez votre film</h2>
+
             {% if app.user %}
             {# Si l'utilisateur est connecté #}
-            <h2 class="text-center">Soumettez votre film</h2>
             {% if app.user.hasVideo %}
             {# Si l'utilisateur a déjà soumis un projet #}
-
             <div class="container w-75">
                 <p class=" text-danger"><i class="fas fa-exclamation-circle"></i> Vous avez déjà soumis un film.</p>
                 <p>Vous ne pouvez proposer qu'un film par session.</p>
@@ -47,11 +47,12 @@
             {% endif %}
             {% else %}
             {# Si l'utilisateur n'est pas connecté #}
-            <h1 class="text-center">Soumettez votre film</h1>
-            <p class="text-center">
-                <a href="{{ path('app_login') }}">Connectez-vous</a> ou <a href="{{ path('front_register') }}">créez un
-                    compte</a> pour participer
-            </p>
+            <div class="card mb-3 m-auto w-75">
+                <div class="card-body">
+                    <a href="{{ path('app_login') }}" class="link-primary">Connectez-vous</a> ou
+                    <a href="{{ path('front_register') }}" class="link-primary">Créez un compte</a>
+                </div>
+            </div>
             {% endif %}
         </div>
     </div>
