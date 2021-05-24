@@ -1,0 +1,53 @@
+{% extends 'front/layout.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block content %}
+
+<div class="row d-block d-md-none">
+    <video class="col-12 px-0" src="{{ asset('ressources/banniere_cigogne.mp4') }}" autoplay muted loop></video>
+</div>
+
+<div id="fondBleu" class=" d-none d-md-block text-center">
+
+    <a class="boutonPlay" href="#">
+        <i class="far fa-play-circle"></i>
+        <p class="text-white fs-5">cliquez pour jouer</p>
+    </a>
+
+    <img id="cigogne" src="{{ asset('ressources/cigogne2.gif') }}" alt="" class="">
+</div>
+
+<main class="container">
+    <div class="row">
+        <img class="col-6 offset-3 my-3" src="{{ asset('ressources/logo_festnum_v1.png') }}" alt="titre">
+    </div>
+
+    <div class="text-center row">
+        <h2 class="col-sm-8 offset-sm-2 col-md-4 offset-md-4 bg-light py-2 mb-0 rounded-top ">Le
+            festival
+            numérique en ligne</h2>
+        <h2 class="col-sm-8 offset-sm-2 col-md-4 offset-md-4 bg-light py-2 rounded-bottom ">du 15 au 25 mai
+            2021</h2>
+    </div>
+    <div class="text-center px-4 my-4">
+        <p class="bg-light rounded-3 p-3">
+            Le festival Festnum a été créé au début des années 2000, par 3 passionnés
+            de cinéma d’animation. Il est devenu au fil des ans un rendez-vous culturel incontournable de la région
+            Grand-Est et une vitrine pour la création et la découverte de nouveaux talents. La direction du festival
+            est familiale et conviviale. La baisse des subventions couplée au contexte sanitaire actuel ont
+            fortement affaibli le festival. Bien menacé de disparaitre. Pour continuer à vivre et à faire vivre le
+            cinéma d’animation, et à ravir les cinéphiles, Festnum prend aujourd’hui le parti et l’initiative de
+            devenir un festival 100% en ligne.
+        </p>
+    </div>
+    <div class="container row text-center m-0">
+        <h3 class="clo-sm-12 col-md-4 offset-md-4 bg-light py-2 rounded-3">Présentation du festival</h3>
+        <div class="video-presentation ratio ratio-16x9">
+            <iframe class="" src="https://www.youtube.com/embed/oMSyEeK7hs0"></iframe>
+        </div>
+    </div>
+</main>
+
+<script src="{{ asset('js/jeu.js') }}"></script>
+{% endblock %}

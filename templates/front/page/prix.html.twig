@@ -1,0 +1,69 @@
+{% extends 'front/layout.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block content %}
+<main class="container">
+    <div class="text-center py-3 my-3">
+        <h2 class="mb-0">Les prix du festival</h2>
+    </div>
+    <div class="row">
+        <div class="prix-jury col-sm-12 px-3 col-md-4">
+            <h3 class="text-center">Prix du jury</h3>
+            <div class="row ratio ratio-16x9 mt-3">
+                <iframe class="mx-2" src="https://www.youtube.com/embed/jT7YzEsLn7Y"></iframe>
+            </div>
+            <p class="mt-2 px-2 bg-light mx-3 text-center">
+                Dessin animé 2D/HD qui tourne à 25 images par seconde, réalisé en 7 mois entre 2015 et 2016 sur
+                le thème des <strong>rollers in line</strong>. A mi-chemin entre le film de super-héros et le
+                film expérimental. Couleurs venant de peintures acrylique. Utilisation de la tablette graphique.
+            </p>
+            <!-- <div class="rating">
+                <a href="#5" title="Donner 5 étoiles">☆</a>
+                <a href="#4" title="Donner 4 étoiles">☆</a>
+                <a href="#3" title="Donner 3 étoiles">☆</a>
+                <a href="#2" title="Donner 2 étoiles">☆</a>
+                <a href="#1" title="Donner 1 étoile">☆</a>
+            </div> -->
+        </div>
+        <div class="prix-public col-sm-12 px-3 col-md-4">
+            <h3 class="text-center">Prix du public</h3>
+            <div class="row ratio ratio-16x9 mt-3">
+                <iframe class="mx-2" src="https://player.vimeo.com/video/237756691"></iframe>
+            </div>
+            <p class="mt-2 px-2 bg-light mx-3 text-center">
+                Dessin animé inspiré du film les <strong>7 samouraï</strong> d'Akira Kurosawa (1958).
+                Utilisation de l'<strong>encre de chine</strong>. Dessiné image par image. 25 images par
+                seconde;utilisation de la palette graphique.Pas de son.
+            </p>
+            <!-- <div class="rating">
+                <a href="#5" title="Donner 5 étoiles">☆</a>
+                <a href="#4" title="Donner 4 étoiles">☆</a>
+                <a href="#3" title="Donner 3 étoiles">☆</a>
+                <a href="#2" title="Donner 2 étoiles">☆</a>
+                <a href="#1" title="Donner 1 étoile">☆</a>
+            </div> -->
+        </div>
+        <div class="row coup-de-coeur col-sm-12 px-3 col-md-4">
+            <h3 class="text-center">Coup de coeur</h3>
+            <div class="ratio ratio-16x9 mt-3 ">
+                <iframe class="mx-2" src="https://www.youtube.com/embed/WhWc3b3KhnY"></iframe>
+            </div>
+            <p class="mt-2 px-2 bg-light mx-3 text-center">
+                Dessin animé en 3d réalisé par la <strong>Blender Fondation</strong> en 2009 avec le logiciel
+                Blender 3d 2.46. Cela raconte les aventures d'un lapin ressemblant à <strong>Tom Rosendaal</strong>,
+                le patron de la Blender Fondation, créateur et développeur du logiciel Blender, contre trois
+                écureuils sournois. Utilisation de Blender Internal. Parodie des films de <strong>Bugs
+                    Bunny</strong>.
+            </p>
+            <div class="rating">
+                <!-- <a href="#5" title="Donner 5 étoiles">☆</a>
+                <a href="#4" title="Donner 4 étoiles">☆</a>
+                <a href="#3" title="Donner 3 étoiles">☆</a>
+                <a href="#2" title="Donner 2 étoiles">☆</a>
+                <a href="#1" title="Donner 1 étoile">☆</a> -->
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

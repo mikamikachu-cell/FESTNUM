@@ -3,17 +3,18 @@
     <img src="{{ asset('ressources/avatar_nicolas.PNG') }}" alt="" srcset="">
 </nav> #}
 
- <nav class="navbar bg-light d-none d-md-block">
+<nav class="navbar bg-light d-none d-md-block">
     <div class="container">
         <img src="{{ asset('ressources/logo-f.png') }}" alt="logo">
-        <a href="accueil.html">Accueil</a>
-        <a href="video.html">Vidéos</a>
-        <a href="contact.html">Contact</a>
-        <a href="jury.html">Jury</a>
-        <a href="archive.html">Archives</a>
-        <a href="prix.html">prix du festival</a>
+        <a href="{{ path('front_home') }}">Accueil</a>
+        {# <a href="{{ path('front_videos') }}">Vidéos</a> #}
+        <a href="{{ path('front_contact') }}">Contact</a>
+        <a href="{{ path('front_jury') }}">Jury</a>
+        <a href="{{ path('front_archives') }}">Archives</a>
+        <a href="{{ path('front_prix') }}">prix du festival</a>
         <div class="dropdown">
-            <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                data-bs-toggle="dropdown" aria-expanded="false">
                 Mon compte
             </a>
             {% if app.user %}
@@ -48,7 +49,7 @@
 
 
 {# NAVBAR avec un seul onglet 'Mon compte' : pour le développement des fonctionnalités back par Alexis #}
-<div class="navbar navbar-expand-md navbar-dark bg-dark mb-4" role="navigation">
+{# <div class="navbar navbar-expand-md navbar-dark bg-dark mb-4" role="navigation">
     <a class="navbar-brand" href="#">Festnum</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
         aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,12 +57,13 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item{# {{ route == 'front_home' ? ' active' }}#}">
+            <li class="nav-item{# {{ route == 'front_home' ? ' active' }}">
                 <a class="nav-link" href="{{ path('front_home') }}">Home</a>
             </li>
 
             <div class="dropdown">
-                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                    data-bs-toggle="dropdown" aria-expanded="false">
                     Mon compte
                 </a>
                 {% if app.user %}
@@ -85,7 +87,7 @@
                     <li><a class="dropdown-item" href="{{ path('front_register') }}">M'enregistrer</a></li>
                 </ul>
                 {% endif %}
-              </div>
+            </div>
 
 
 
@@ -114,7 +116,7 @@
                         <a href="{{ path('app_reset_password', { 'id': app.user.id }) }}">
                             <i class="fas fa-key"></i> Modifier mon mot de passe
                         </a>
-                    </li> #}
+                    </li>
                     <li class="dropdown-item">
                         <a href="{{ path('app_logout') }}">
                             <i class="fas fa-sign-out-alt"></i> Me déconnecter
@@ -130,12 +132,12 @@
                     <i class="fas fa-user"></i> Mon compte
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdown_account">
-                    <li class="dropdown-item{#{{ route == 'app_login' ? ' active' }}#}">
+                    <li class="dropdown-item{#{{ route == 'app_login' ? ' active' }}">
                         <a href="{{ path('app_login') }}">
                             <i class="fas fa-sign-in-alt"></i> Me connecter
                         </a>
                     </li>
-                    <li class="dropdown-item{#{{ route == 'front_register' ? ' active' }}#}">
+                    <li class="dropdown-item{#{{ route == 'front_register' ? ' active' }}">
                         <a href="{{ path('front_register') }}">
                             <i class="fas fa-user"></i> M'enregistrer
                         </a>
@@ -145,7 +147,7 @@
             {% endif %}
         </ul>
     </div>
-</div>
+</div> #}
 
 {# NAVBAR ECRAN LARGE #}
 {# <nav class="navbar bg-light d-none d-md-block">
@@ -158,19 +160,20 @@
         <a href="archive.html">Archives</a>
         <a href="prix.html">prix du festival</a>
         {% if app.user %}
-        {# 
-            <a href="#">Mon compte</a>
+        {#
+        <a href="#">Mon compte</a>
         {% else %}
-            <a href="{{ path('app_login') }}">Mon compte</a>
+        <a href="{{ path('app_login') }}">Mon compte</a>
         {% endif %} #}
 
 
-{# ANCICENNE VERSION | NAVBAR ECRAN LARGE #}
+        {# ANCICENNE VERSION | NAVBAR ECRAN LARGE #}
         {# <ul class="navbar-nav mr-auto">
             {% if app.user %}
             <!-- Si utilisateur connecté -->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="dropdown_account" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" id="dropdown_account" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
                     Mon compte
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdown_account">
@@ -184,13 +187,14 @@
                         <a href="{{ path('app_reset_password', { 'id': app.user.id }) }}">
                             <i class="fas fa-"></i> {{ 'nav.account_reset_password'|trans() }}
                         </a>
-                    </li> 
+                    </li>
                 </ul>
             </li>
             {% else %}
             <!-- Si utilisateur non connecté -->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="dropdown_account" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" id="dropdown_account" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
                     Mon compte
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdown_account">
@@ -239,13 +243,15 @@
                 </li> #}
                 {# {% if app.user %}
                 <li class="navitem ">
-                    <a href="{{ path('app_logout') }}" class="nav-link" id="dropdown_account" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a href="{{ path('app_logout') }}" class="nav-link" id="dropdown_account" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
                         Mon compte
                     </a>
                 </li>
                 {% else %}
                 <li class="navitem ">
-                    <a href="{{ path('app_logout') }}" class="nav-link" id="dropdown_account" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a href="{{ path('app_logout') }}" class="nav-link" id="dropdown_account" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
                         Mon compte
                     </a>
                 </li>
@@ -253,67 +259,47 @@
 
 
 
-{# ANCIENNE VERSION | NAVBAR MOBILE #}
-                    {# {% if app.user %}
-                    <!-- Si utilisateur connecté -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="dropdown_account" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Mon compte
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="dropdown_account">
-                            <li class="dropdown-item">
-                                <a href="#">Profil</a>
-                            </li>
-                            <li class="dropdown-item">
-                                <a href="{{ path('app_logout') }}">Me déconnecter</a>
-                            </li>
-                            {# <li class="dropdown-item{{ route == 'app_reset_password' ? ' active' }}">
-                                <a href="{{ path('app_reset_password', { 'id': app.user.id }) }}">
-                                    <i class="fas fa-"></i> {{ 'nav.account_reset_password'|trans() }}
-                                </a>
-                            </li> 
-                        </ul>
-                    </li>
-                    {% else %}
-                    <!-- Si utilisateur non connecté -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="dropdown_account" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Mon compte
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="dropdown_account">
-                            <li class="dropdown-item{{ route == 'app_login' ? ' active' }}">
-                                <a href="{{ path('app_login') }}">Me connecter</a>
-                            </li>
-                            <li class="dropdown-item{{ route == 'front_register' ? ' active' }}">
-                                <a href="{{ path('front_register') }}">M'enregistrer</a>
-                            </li>
-                        </ul>
-                    </li>
-                    {% endif %} 
+                {# ANCIENNE VERSION | NAVBAR MOBILE #}
+                {# {% if app.user %}
+                <!-- Si utilisateur connecté -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="dropdown_account" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Mon compte
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown_account">
+                        <li class="dropdown-item">
+                            <a href="#">Profil</a>
+                        </li>
+                        <li class="dropdown-item">
+                            <a href="{{ path('app_logout') }}">Me déconnecter</a>
+                        </li>
+                        {# <li class="dropdown-item{{ route == 'app_reset_password' ? ' active' }}">
+                            <a href="{{ path('app_reset_password', { 'id': app.user.id }) }}">
+                                <i class="fas fa-"></i> {{ 'nav.account_reset_password'|trans() }}
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                {% else %}
+                <!-- Si utilisateur non connecté -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="dropdown_account" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Mon compte
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown_account">
+                        <li class="dropdown-item{{ route == 'app_login' ? ' active' }}">
+                            <a href="{{ path('app_login') }}">Me connecter</a>
+                        </li>
+                        <li class="dropdown-item{{ route == 'front_register' ? ' active' }}">
+                            <a href="{{ path('front_register') }}">M'enregistrer</a>
+                        </li>
+                    </ul>
+                </li>
+                {% endif %}
             </ul>
         </div>
     </div>
 </nav>
 #}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
