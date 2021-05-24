@@ -7,7 +7,7 @@ parameters:
     # configuration upload video
     app.path.user_videos: "/uploads/videos"
     configuration:
-            name: "Test"
+            name: "Festnum"
             from_email: contact@alexisdev.info
             # to-email : alexis.decol@colombbus.org
 services:

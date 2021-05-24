@@ -62,7 +62,7 @@ class Mailer
             ],
             UrlGeneratorInterface::ABSOLUTE_URL
         );
-        $subject = $this->translator->trans('registration.email.subject', ['%user%' => $user], 'security');
+        $subject = 'Activation du compte'; //$this->translator->trans('registration.email.subject', ['%user%' => $user], 'security');
         $template = 'front/email/register.html.twig';
         // dd($this);
         // $from = [

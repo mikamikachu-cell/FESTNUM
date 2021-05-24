@@ -61,7 +61,7 @@ class User implements UserInterface
     private $lastname;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $hasVideo;
 

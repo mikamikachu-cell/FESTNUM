@@ -1,11 +1,14 @@
- 
-{# templates/front/email/register.html.twig #}
-{{ 'registration.email.message %confirmation_url%'
-    | trans({
-        '%user%': user,
-        '%confirmation_url%': confirmation_url,
-        '%host%': app.request.schemeAndHttpHost,
-        '%website_name%': website_name
-        }, 'security')
-    |raw|nl2br
-}}
+<div>
+    <p>
+        Bonjour
+        <span style="text-transform: capitalize;">{{ user.firstname }}</span>
+        <span style="text-transform: uppercase;">{{ user.lastname }}</span>.
+    </p>
+</div>
+
+<div>
+    <p>Merci de rejoindre {{ website_name }} !</p>
+    <p>Pour activer votre compte, cliquez sur le lien d'activation suivant : {{ confirmation_url }}</p>
+</div>
+
+<p>L'équipe Festnum</p>
