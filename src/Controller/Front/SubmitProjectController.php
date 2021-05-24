@@ -40,8 +40,8 @@ class SubmitProjectController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            $msg = 'Video transmise';
-            $this->addFlash('info', $msg);
+            // $msg = 'Video transmise';
+            // $this->addFlash('info', $msg);
             return $this->redirectToRoute('front_home');
         }
 

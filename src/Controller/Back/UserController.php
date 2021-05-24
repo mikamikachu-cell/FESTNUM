@@ -111,8 +111,8 @@ class UserController extends AbstractController
             // envoie le mail à l'utilisateur avec la méthode créée auparavant;
             $mailer->sendInvitation($user, $password);
 
-            $msg = $this->translator->trans('user.create.flash.success', ['%identifier%' => $user,], 'back_messages');
-            $this->addFlash('success', $msg);
+            // $msg = $this->translator->trans('user.create.flash.success', ['%identifier%' => $user,], 'back_messages');
+            // $this->addFlash('success', $msg);
             return $this->redirectToRoute('back_user_search');
         }
 
@@ -146,8 +146,8 @@ class UserController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-            $msg = $this->translator->trans('user.update.flash.success', [], 'back_messages');
-            $this->addFlash('success', $msg);
+            // $msg = $this->translator->trans('user.update.flash.success', [], 'back_messages');
+            // $this->addFlash('success', $msg);
 
             return $this->redirectToRoute('back_user_search');
         }

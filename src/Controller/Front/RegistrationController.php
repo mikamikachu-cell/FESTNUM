@@ -53,8 +53,8 @@ class RegistrationController extends AbstractController
 
             $mailer->sendRegistration($user);
 
-            $msg = $this->translator->trans('registration.flash.check_email', ['%email%' => $user->getEmail(),], 'security');
-            $this->addFlash('info', $msg);
+            // $msg = $this->translator->trans('registration.flash.check_email', ['%email%' => $user->getEmail(),], 'security');
+            // $this->addFlash('info', $msg);
 
             return $this->redirectToRoute('app_login');
         }

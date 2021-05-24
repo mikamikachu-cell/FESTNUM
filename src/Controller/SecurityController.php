@@ -75,8 +75,8 @@ class SecurityController extends AbstractController
         $this->getDoctrine()->getManager()->flush();
 
         // $msg = $this->translator->trans('registration.flash.confirmed', ['%user%' => $user,], 'security');
-        $msg = 'Compte activé';
-        $this->addFlash('success', $msg);
+        // $msg = 'Compte activé';
+        // $this->addFlash('success', $msg);
 
         return $guardHandler->authenticateUserAndHandleSuccess(
             $user,
@@ -140,8 +140,8 @@ class SecurityController extends AbstractController
                 $user->setConfirmationToken(null);
             }
             $this->getDoctrine()->getManager()->flush();
-            $msg = $this->translator->trans('Mot de passe modifié avec succès', [], 'security');
-            $this->addFlash('info', $msg);
+            // $msg = $this->translator->trans('Mot de passe modifié avec succès', [], 'security');
+            // $this->addFlash('info', $msg);
             return $guardHandler->authenticateUserAndHandleSuccess($user, $request, $authenticator, 'main');
         }
         return $this->render('security/reset_password.html.twig', [
