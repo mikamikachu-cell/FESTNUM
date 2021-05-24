@@ -6,51 +6,54 @@
 <section class="pt-4 pb-4">
     <div class="container">
         <div class="col-lg-6 mx-auto">
-                {% if app.user %}
-                    {# Si l'utilisateur est connecté #}
-                    <h1 class="text-center">Soumettez votre film</h1>
-                    {% if app.user.hasVideo %}
-                        {# Si l'utilisateur a déjà soumis un projet #}
-                    
-                        <p class=" text-danger"><i class="fas fa-exclamation-circle"></i> Vous avez déjà soumis un film.</p>
-                        <p>Vous ne pouvez proposer qu'un film par session.</p>
-                        <p>Pour continuer, supprimez le projet précédent.</p>
-                        <div class="card mb-3" style="max-width: 18rem;">
-                            <div class="card-header fw-bold">Projet précédent</div>
-                            <div class="card-body">
-                              <p class="card-text">titre : {{ videoFile.title }}</p>
-                              <p class="card-text">description : {{ videoFile.description }}</p>
-                              <a href="{{ path('delete_project', {id: app.user.id}) }}" class="btn btn-danger">Supprimer</a>
-                            </div>
-                        </div>
-                    {% else %}
-                        {# Si l'utilisateur n'a pas encore soumis de projet #}
-                        <div class="card-body">
-                            {{ form_start(form) }}
-                            {# note : Les paramètres du formulaire sont définie dans App/Form/Front/UploadVideoFormType.php #}
-                            {{ form_label(form.title, null, { 'label_attr': {'class': 'form-label'} }) }}
-                            {{ form_widget(form.title, { 'attr': {'class': 'form-control mb-3'} }) }}
-                            {{ form_label(form.description, null, { 'label_attr': {'class': 'form-label'} }) }}
-                            {{ form_widget(form.description, { 'attr': {'class': 'form-control mb-3'} }) }}
-                            {{ form_label(form.file, null, { 'label_attr': {'class': 'form-label'} }) }}
-                            {{ form_widget(form.file, { 'attr': {'class': 'form-control mb-3'} }) }}     
-                            {# <input type="file" accept="video/mp4"> #}
-                            <div class="form-group text-center">
-                                <button class="btn btn-primary btn-block" type="submit">
-                                Envoyer
-                                </button>
-                            </div>
-                            {{ form_end(form) }}
-                        </div>
-                    {% endif %}
-                {% else %}
-                    {# Si l'utilisateur n'est pas connecté #}
-                    <h1 class="text-center">Soumettez votre film</h1>
-                    <p class="text-center">
-                        <a href="{{ path('app_login') }}">Connectez-vous</a> ou <a href="{{ path('front_register') }}">créez un compte</a> pour participer
-                    </p>
-                {% endif %}
+            {% if app.user %}
+            {# Si l'utilisateur est connecté #}
+            <h1 class="text-center">Soumettez votre film</h1>
+            {% if app.user.hasVideo %}
+            {# Si l'utilisateur a déjà soumis un projet #}
+
+            <div class="container w-75">
+                <p class=" text-danger"><i class="fas fa-exclamation-circle"></i> Vous avez déjà soumis un film.</p>
+                <p>Vous ne pouvez proposer qu'un film par session.</p>
+                <p>Pour continuer, supprimez le projet précédent.</p>
             </div>
+            <div class="card mb-3 m-auto w-75">
+                <div class="card-header fw-bold">Projet précédent</div>
+                <div class="card-body">
+                    <p class="card-text">titre : {{ videoFile.title }}</p>
+                    <p class="card-text">description : {{ videoFile.description }}</p>
+                    <a href="{{ path('delete_project', {id: app.user.id}) }}" class="btn btn-danger">Supprimer</a>
+                </div>
+            </div>
+            {% else %}
+            {# Si l'utilisateur n'a pas encore soumis de projet #}
+            <div class="card-body">
+                {{ form_start(form) }}
+                {# note : Les paramètres du formulaire sont définie dans App/Form/Front/UploadVideoFormType.php #}
+                {{ form_label(form.title, null, { 'label_attr': {'class': 'form-label'} }) }}
+                {{ form_widget(form.title, { 'attr': {'class': 'form-control mb-3'} }) }}
+                {{ form_label(form.description, null, { 'label_attr': {'class': 'form-label'} }) }}
+                {{ form_widget(form.description, { 'attr': {'class': 'form-control mb-3'} }) }}
+                {{ form_label(form.file, null, { 'label_attr': {'class': 'form-label'} }) }}
+                {{ form_widget(form.file, { 'attr': {'class': 'form-control mb-3'} }) }}
+                {# <input type="file" accept="video/mp4"> #}
+                <div class="form-group text-center">
+                    <button class="btn btn-primary btn-block" type="submit">
+                        Envoyer
+                    </button>
+                </div>
+                {{ form_end(form) }}
+            </div>
+            {% endif %}
+            {% else %}
+            {# Si l'utilisateur n'est pas connecté #}
+            <h1 class="text-center">Soumettez votre film</h1>
+            <p class="text-center">
+                <a href="{{ path('app_login') }}">Connectez-vous</a> ou <a href="{{ path('front_register') }}">créez un
+                    compte</a> pour participer
+            </p>
+            {% endif %}
+        </div>
     </div>
 </section>
 {% endblock %}

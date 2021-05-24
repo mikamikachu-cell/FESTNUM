@@ -3,29 +3,35 @@
 {% block title %}{% endblock %}
 
 {% block content %}
-    {% if app.user %}
-    <div class="container">
+<section class="pt-4 pb-4">
+  <div class="container">
+    <div class="col-lg-6 mx-auto">
+
+      {% if app.user %}
+      <h1 class="text-center">Mon profil</h1>
+      <div class="card mb-3 m-auto w-75">
+        <div class="card-header fw-bold text-center">{{ app.user.lastname }} {{ app.user.firstname }}</div>
+        <div class="card-body">
+          <p class="card-text"> Email : {{app.user.email}}</p>
+          <p class="card-text"> Dernière connexion le : {{app.user.lastLoginAt|date("d/m/Y") }}</p>
+          <p class="card-text"> Profil crée le : {{app.user.createdAt|date("d/m/Y")}}</p>
+          <a href="{{ path('app_reset_password', { 'id': app.user.id }) }}" class="btn btn-primary">Modifier mon mot de
+            passe</a>
+        </div>
+      </div>
+
+      {% else %}
+      <div class="container">
         <div class="card w-75">
-            <div class="card-body">
-              <h1 class="card-title text-center">Mon profil</h1>
-              <p class="card-text"> Vous êtes connecté en tant que {{app.user.firstname}} {{app.user.lastname}}.</p>
-              <p class="card-text"> Votre email : {{app.user.email}}</p>
-              <p class="card-text"> Dernière connexion : {{app.user.lastLoginAt|date("d/m/Y") }}</p>
-              <p class="card-text"> Profil crée : {{app.user.createdAt|date("d/m/Y")}}</p>
-              <a href="{{ path('app_reset_password', { 'id': app.user.id }) }}" class="btn btn-primary">Modifier mon mot de passe</a>
-            </div>
-          </div>
-    </div>
-   
-    
-    {% else %}
-    <div class="container">
-      <div class="card w-75">
           <div class="card-body">
             <h1 class="card-title text-center">Mon profil</h1>
-            <a href="{{ path('app_login') }}">Connectez-vous</a> ou <a href="{{ path('front_register') }}">Créez un compte</a>
+            <a href="{{ path('app_login') }}">Connectez-vous</a> ou <a href="{{ path('front_register') }}">Créez un
+              compte</a>
           </div>
+        </div>
       </div>
+      {% endif %}
+    </div>
   </div>
-  {% endif %}
+</section>
 {% endblock %}
