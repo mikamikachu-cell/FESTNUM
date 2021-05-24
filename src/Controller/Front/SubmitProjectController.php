@@ -40,9 +40,9 @@ class SubmitProjectController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            // $msg = 'Video transmise';
-            // $this->addFlash('info', $msg);
-            return $this->redirectToRoute('front_home');
+            $msg = 'Votre participation a bien été prise en compte.';
+            $this->addFlash('success', $msg);
+            return $this->redirectToRoute('front_profile');
         }
 
         /* Le formulaire doit être affiché (première étape)
@@ -77,6 +77,9 @@ class SubmitProjectController extends AbstractController
         $video = $em->getRepository('App:Video')->find($videoId);
         $em->remove($video);
         $em->flush();
+
+        $msg = 'Votre participation précédente a été supprimée';
+        $this->addFlash('danger', $msg);
 
         return $this->redirectToRoute('submit_project', array(
             'id' => $user->getId()

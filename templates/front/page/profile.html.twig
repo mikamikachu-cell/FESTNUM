@@ -18,6 +18,13 @@
           <p class="card-text"> Email : {{app.user.email}}</p>
           <p class="card-text"> Dernière connexion le : {{app.user.lastLoginAt|date("d/m/Y") }}</p>
           <p class="card-text"> Profil crée le : {{app.user.createdAt|date("d/m/Y")}}</p>
+          <p>
+            {% if app.user.hasVideo %}
+            Un projet a été transmis au festival et est en cours de traitement
+            {% else %}
+            Pas de projet transmis au festival
+            {% endif %}
+          </p>
           <a href="{{ path('app_reset_password', { 'id': app.user.id }) }}" class="btn btn-primary">Modifier mon mot de
             passe</a>
         </div>

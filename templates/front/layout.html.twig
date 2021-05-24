@@ -12,12 +12,12 @@ réécriture d'un bloc
 
 <body>
     <header>
-        {# {% block flash_message %}
-        {% include "block/_flash_message.html.twig" %}
-        {% endblock %} #}
-
         {% block navbar %}
         {% include "front/block/_navbar.html.twig" %}
+        {% endblock %}
+
+        {% block flash_message %}
+        {% include "block/_flash_message.html.twig" %}
         {% endblock %}
     </header>
 
@@ -28,7 +28,6 @@ réécriture d'un bloc
     {% block footer %}
     {% include "front/block/_footer.html.twig" %}
     {% endblock %}
-
 
     {% block javascripts %}
     {{ encore_entry_script_tags('front_app') }}
