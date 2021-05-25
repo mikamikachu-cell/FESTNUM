@@ -77,13 +77,16 @@ document.onkeydown = move
 document.onkeyup = reset
 
 function estEnCollision(a, b) {
-    let cigogne = a.getBoundingClientRect()
-    let bobine = b.getBoundingClientRect()
+    let cigogne = document.getElementsById('cigogne')
+    let bobine = document.getElementsByClassName('bobine')
 
-    return !(((cigogne.top + cigogne.height) < (bobine.top)) ||
+    if (((cigogne.top + cigogne.height) < (bobine.top)) ||
         (cigogne.top > (bobine.top + bobine.height)) ||
         ((cigogne.left + cigogne.width) < bobine.left) ||
-        (cigogne.left > (bobine.left + bobine.width)))
+        (cigogne.left > (bobine.left + bobine.width))) { console.log('objet detecté') }
 
 }
+
+
 // https://stackoverflow.com/questions/2440377/javascript-collision-detection
+//https://developer.mozilla.org/fr/docs/Games/Techniques/2D_collision_detection
