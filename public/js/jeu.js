@@ -104,7 +104,7 @@ function sontEnCollision() {
 
     console.log(cigOffset, bobineOffset);
     if (cigOffset <= bobineOffset + 80 && cigOffset >= bobineOffset - 50) {
-
+        console.log('touché')
 
     }
 }
