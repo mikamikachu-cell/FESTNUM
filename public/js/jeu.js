@@ -25,6 +25,8 @@ const HAUTEUR_GIF = 200
 function move(e) {
     // e.preventDefault() // permet de désactiver le comportement par défaut du navigateur (descente dans la page / scrollbar)
     let hitBox = document.querySelector('#fondBleu')
+    let bobine = document.getElementsByClassName('bobine')
+
     if (e.keyCode == CLAVIER_DROIT) {
         if (hitBox.offsetWidth < positionX + LARGEUR_GIF) {
             return
@@ -68,10 +70,34 @@ function move(e) {
         accelY = accelY - 1
         sprite.style.top = positionY + 'px'
     }
+
+    let mika = sontEnCollision()
+    console.log('collision ?', mika)
 }
 
-function reset() {
-    accelX = 0
+/**
+ * 
+ * @returns true si une collision est détectée entre la cigogne et la bobine
+ */
+function sontEnCollision() {
+    let cigogne = document.getElementById('cigogne')
+    let bobine = document.getElementsByClassName('bobine')
+
+    if (((cigogne.top + cigogne.height) < (bobine.top)) ||
+        (cigogne.top > (bobine.top + bobine.height)) ||
+        ((cigogne.left + cigogne.width) < bobine.left) ||
+        (cigogne.left > (bobine.left + bobine.width))) { return true }
+    return false
 }
-document.onkeydown = move
-document.onkeyup = reset
+
+
+let boutonDemarrer = document.querySelector('#fondBleu .fa-play-circle')
+console.log('bout', boutonDemarrer)
+// document.onkeyup = reset
+
+function demarrerJeu() {
+    document.onkeydown = move
+    boutonDemarrer.classList.add('d-none')
+}
+
+boutonDemarrer.addEventListener('click', demarrerJeu)
