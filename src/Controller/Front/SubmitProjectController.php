@@ -23,15 +23,15 @@ class SubmitProjectController extends AbstractController
         /* Le formulaire a été soumis (deuxième étape) : 
            enregistrement des données et redirection    */
         if ($form->isSubmitted() && $form->isValid()) {
-            // dd($request->files);
             $entityManager = $this->getDoctrine()->getManager();
-            // dd($request);
+
             // Récupération des données depuis le formulaire et enregistrement en BDD
             $video = new Video();
             $video->setTitle($request->request->get('upload_video_form')['title']);
             $video->setDescription($request->request->get('upload_video_form')['description']);
-            // $video->setFilename($request->files->get('upload_video_form')['file']->getFilename());
+            $video->setFile($request->files->get('upload_video_form')['file']['file']);
             $video->setFilename($request->files->get('upload_video_form')['file']['file']->getFilename());
+            // $video->setFilename($request->files->get('upload_video_form')['file']->getFilename());
             $entityManager->persist($video);
             $entityManager->flush();
 
@@ -61,6 +61,7 @@ class SubmitProjectController extends AbstractController
             ]);
         }
     }
+
     /**
      * @Route("/delete/{id}", name="delete_project")
      */
@@ -68,13 +69,12 @@ class SubmitProjectController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
         $videoId = $user->getVideoId();
-
+        // Changement infos utilisateur
         $user->setHasVideo(false);
         $user->setVideoId(null);
         $em->persist($user);
         $em->flush();
-
-
+        // Suppression video
         $video = $em->getRepository('App:Video')->find($videoId);
         $em->remove($video);
         $em->flush();
