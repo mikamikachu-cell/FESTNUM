@@ -7,4 +7,4 @@ relatif au dossier template
 RESSOURCES
 - relatif au dossier public
 pour utiliser une ressource, on écrit :
-<img src="{{ asset('nom_du_fichier.png')">
+<img src="{{ asset('nom_du_fichier.png') }}">
