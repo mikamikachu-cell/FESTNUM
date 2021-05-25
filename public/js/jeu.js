@@ -58,7 +58,7 @@ function move(e) {
         positionY -= 5
         accelY = accelY + 1
         sprite.style.top = positionY + 'px'
-        console.log(positionY, window.innerHeight);
+        // console.log(positionY, window.innerHeight);
 
     }
 
@@ -72,7 +72,7 @@ function move(e) {
     }
 
     let mika = sontEnCollision()
-    console.log('collision ?', mika)
+    // console.log('collision ?', mika)
 }
 
 /**
@@ -81,13 +81,31 @@ function move(e) {
  */
 function sontEnCollision() {
     let cigogne = document.getElementById('cigogne')
-    let bobine = document.getElementsByClassName('bobine2')
+    let bobine = document.getElementsByClassName('bobine2')[0]
+    // console.log('collision', cigogne.top, cigogne.height);
+    // if (((cigogne.top + cigogne.height) < (bobine.top)) ||
+    //     (cigogne.top > (bobine.top + bobine.height)) ||
+    //     ((cigogne.left + cigogne.width) < bobine.left) ||
+    //     (cigogne.left > (bobine.left + bobine.width))) { return true }
+    // return false
 
-    if (((cigogne.top + cigogne.height) < (bobine.top)) ||
-        (cigogne.top > (bobine.top + bobine.height)) ||
-        ((cigogne.left + cigogne.width) < bobine.left) ||
-        (cigogne.left > (bobine.left + bobine.width))) { return true }
-    return false
+    // let test = new HitTest(cigogne)
+
+    // if (test.toObject(bobine)) {
+    //     // Collision detected
+    //     console.log("touché !!");
+    // }
+    let bodyRect = document.body.getBoundingClientRect(),
+        cigRect = cigogne.getBoundingClientRect(),
+        cigOffset = cigRect.left - bodyRect.left,
+        bobineRect = bobine.getBoundingClientRect(),
+        bobineOffset = Math.floor(bobineRect.left - bodyRect.left);
+
+
+    console.log(cigOffset, bobineOffset);
+    if (cigOffset <= bobineOffset + 80 && cigOffset >= bobineOffset - 50) {
+        console.log("ca touche la bobine");
+    }
 }
 
 
