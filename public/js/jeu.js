@@ -81,7 +81,7 @@ function move(e) {
  */
 function sontEnCollision() {
     let cigogne = document.getElementById('cigogne')
-    let bobine = document.getElementsByClassName('bobine')
+    let bobine = document.getElementsByClassName('bobine2')
 
     if (((cigogne.top + cigogne.height) < (bobine.top)) ||
         (cigogne.top > (bobine.top + bobine.height)) ||
