@@ -75,3 +75,15 @@ function reset() {
 }
 document.onkeydown = move
 document.onkeyup = reset
+
+function estEnCollision(a, b) {
+    let cigogne = a.getBoundingClientRect()
+    let bobine = b.getBoundingClientRect()
+
+    return !(((cigogne.top + cigogne.height) < (bobine.top)) ||
+        (cigogne.top > (bobine.top + bobine.height)) ||
+        ((cigogne.left + cigogne.width) < bobine.left) ||
+        (cigogne.left > (bobine.left + bobine.width)))
+
+}
+// https://stackoverflow.com/questions/2440377/javascript-collision-detection
