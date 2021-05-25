@@ -23,8 +23,9 @@ class SubmitProjectController extends AbstractController
         /* Le formulaire a été soumis (deuxième étape) : 
            enregistrement des données et redirection    */
         if ($form->isSubmitted() && $form->isValid()) {
+            // dd($request->files);
             $entityManager = $this->getDoctrine()->getManager();
-
+            // dd($request);
             // Récupération des données depuis le formulaire et enregistrement en BDD
             $video = new Video();
             $video->setTitle($request->request->get('upload_video_form')['title']);

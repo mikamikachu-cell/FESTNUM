@@ -62,27 +62,19 @@ class Mailer
             ],
             UrlGeneratorInterface::ABSOLUTE_URL
         );
-        $subject = 'Activation du compte'; //$this->translator->trans('registration.email.subject', ['%user%' => $user], 'security');
         $template = 'front/email/register.html.twig';
-        // dd($this);
-        // $from = [
-        //     $this->parameters->get('configuration.')['from_email'] => $this->parameters->get('configuration')['name'],
-        // ];
+
+        $subject = 'Activation du compte';
         $from = [
             $this->parameters->get('configuration')['from_email'] => $this->parameters->get('configuration')['name'],
         ];
         $to = $user->getEmail();
-        // $from contient ["contact@alexisdev.info" => "Test"]
-        // $to contient "alexis.decol@colombbus.org"
 
-        // $body = $this->templating->render($template, [
         $body = $this->twig->render($template, [
             'user' => $user,
             'website_name' => $this->parameters->get('configuration')['name'],
             'confirmation_url' => $url,
         ]);
-
-
 
         $message = (new \Swift_Message())
             ->setSubject($subject)
@@ -93,7 +85,7 @@ class Mailer
         $this->mailer->send($message);
     }
 
-    // Envoi d'une invitation utilisateur par mail
+    // Envoi d'une invitation utilisateur par mail : utilisé pour la création de compte par admin
     public function sendInvitation(User $user, string $password)
     {
         $url = $this->router->generate(

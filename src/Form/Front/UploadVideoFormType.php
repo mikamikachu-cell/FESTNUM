@@ -19,21 +19,19 @@ class UploadVideoFormType extends AbstractType
         $builder
             ->add('title', TextType::class, [
                 'label' => 'Titre',
-                'data' => 'titre ' . Date('now'),
-
                 'attr' => [
                     'placeholder' => 'Le titre du film'
                 ],
             ])
             ->add('description', TextType::class, [
                 'label' => 'Description',
-                'data' => 'Default value',
                 'attr' => [
                     'placeholder' => 'Décrivez le projet en quelques mots'
                 ]
             ])
             ->add('file', VichFileType::class, [
                 'label' => 'Video',
+                'allow_delete' => true,
                 'attr' => [
                     'accept' => 'image/*'
                 ]

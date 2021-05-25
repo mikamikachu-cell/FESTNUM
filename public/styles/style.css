@@ -73,35 +73,24 @@ body a {
 
 #cigogne {
     position: absolute;
-    margin-top: 80px;
     top: 0;
     left: 0;
     width: 250px;
     transform: scaleX(1);
 }
 
-#fondBleu {
+.container-video {
+    position: relative;
+    overflow: hidden;
+}
+
+.video {
+    margin-bottom: -400px;
+    margin-top: -480px;
+}
+
+/* #fondBleu {
     height: 260px;
     background-image: url(../ressources/fond-cigogne.png);
     margin-top: -50px;
-}
-
-/* ------------------ */
-
-/* 5 etoiles */
-
-.rating {
-    direction: rtl;
-}
-
-.rating a {
-    color: #aaa;
-    text-decoration: none;
-    font-size: 3em;
-    transition: color .4s;
-}
-
-.rating a:hover, .rating a:focus, .rating a:hover~a, .rating a:focus~a {
-    color: orange;
-    cursor: pointer;
-}
+} */

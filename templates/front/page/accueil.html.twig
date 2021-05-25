@@ -8,6 +8,13 @@
     <video class="col-12 px-0" src="{{ asset('ressources/banniere_cigogne.mp4') }}" autoplay muted loop></video>
 </div>
 
+<div class="container-video">
+    <video class="video" autoplay loop muted>
+        <source src="{{ asset('ressources/nuage.mp4') }}" type="video/mp4">
+    </video>
+    <img id="cigogne" src="{{ asset('ressources/cigogne2.gif') }}" alt="" class="">
+</div>
+
 <div id="fondBleu" class=" d-none d-md-block text-center">
 
     <a class="boutonPlay" href="#">
@@ -25,6 +32,14 @@
     </div>
 
     <div class="text-center row">
+        <div>
+        {% if app.user %}
+        <a href="{{ path('submit_project', {id: app.user.id}) }}">soumettre une video</a>
+        {% else %} 
+        <a href="{{ path('app_login') }}">soumettre un video kantépaco </a>    
+        {% endif %}   
+</div>
+
         <h2 class="col-sm-8 offset-sm-2 col-md-4 offset-md-4 bg-light py-2 mb-0 rounded-top ">Le
             festival
             numérique en ligne</h2>

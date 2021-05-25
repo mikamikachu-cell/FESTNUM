@@ -6,6 +6,8 @@ use App\Repository\VideoRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Vich\UploaderBundle\Mapping\Annotation\Uploadable;
+use Vich\UploaderBundle\Mapping\Annotation\UploadableField;
 
 /**
  * @ORM\Entity(repositoryClass=VideoRepository::class)
@@ -35,11 +37,12 @@ class Video
      */
     private $filename;
 
-    // /**
-    //  * @Vich\UploadableField(mapping="user_videos", fileNameProperty="filename")
-    //  * @var File
-    //  */
-    // private $file;
+    /**
+     * @Vich\UploadableField(mapping="user_videos", fileNameProperty="filename")
+     * @var File
+     */
+    private $file;
+
 
     public function __construct()
     {
