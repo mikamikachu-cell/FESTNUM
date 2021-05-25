@@ -3,9 +3,10 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\OneToOne;
 use Symfony\Component\HttpFoundation\File\File;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
 // use Vich\UploaderBundle\Mapping\Annotation\UploadableField;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
@@ -69,6 +70,12 @@ class User implements UserInterface
      * @ORM\Column(type="integer", length=255, nullable=true)
      */
     private $videoId;
+
+    /**
+     * @Vich\UploadableField(mapping="user_videos", fileNameProperty="filename")
+     * @var File
+     */
+    private $file;
 
     // /**
     //  * @ORM\Column(type="string", length=255)

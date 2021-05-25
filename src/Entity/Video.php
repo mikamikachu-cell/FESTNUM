@@ -35,11 +35,15 @@ class Video
      */
     private $filename;
 
-    /**
-     * @Vich\UploadableField(mapping="user_videos", fileNameProperty="file")
-     * @var File
-     */
-    private $file;
+    // /**
+    //  * @Vich\UploadableField(mapping="user_videos", fileNameProperty="filename")
+    //  * @var File
+    //  */
+    // private $file;
+
+    public function __construct()
+    {
+    }
 
     public function getId(): ?int
     {
@@ -75,7 +79,7 @@ class Video
         return $this->filename;
     }
 
-    public function setFilename(string $filename): self
+    public function setFilename(?string $filename): self
     {
         $this->filename = $filename;
 
