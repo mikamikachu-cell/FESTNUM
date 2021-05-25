@@ -1,5 +1,3 @@
-const { nodeName } = require("jquery")
-
 /* console.log("coucou"); */
 let sprite = document.querySelector('#cigogne')
 //  je récupère l'id de la cigogne
@@ -106,7 +104,8 @@ function sontEnCollision() {
 
     console.log(cigOffset, bobineOffset);
     if (cigOffset <= bobineOffset + 80 && cigOffset >= bobineOffset - 50) {
-        console.log('touché')
+
+
     }
 }
 
