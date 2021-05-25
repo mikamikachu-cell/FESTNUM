@@ -33,7 +33,7 @@ class UploadVideoFormType extends AbstractType
                 'label' => 'Video',
                 'allow_delete' => true,
                 'attr' => [
-                    'accept' => 'image/*'
+                    'accept' => 'video/*'
                 ]
             ]);
     }
