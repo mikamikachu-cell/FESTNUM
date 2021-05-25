@@ -4,13 +4,7 @@
 {{ encore_entry_link_tags('front_app') }}
 {% endblock %}
 
-{% block nicolas %}
-réécriture d'un bloc
-{% endblock %}
-
 {% block body %}
-
-<body>
     <header>
         {% block navbar %}
         {% include "front/block/_navbar.html.twig" %}
@@ -32,5 +26,5 @@ réécriture d'un bloc
     {% block javascripts %}
     {{ encore_entry_script_tags('front_app') }}
     {% endblock %}
-</body>
+
 {% endblock %}
