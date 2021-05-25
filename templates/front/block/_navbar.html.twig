@@ -41,9 +41,11 @@
             </ul>
             {% else %}
             <!-- Si utilisateur non connecté -->
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <li><a class="dropdown-item" href="{{ path('app_login') }}">Me connecter</a></li>
-                <li><a class="dropdown-item" href="{{ path('front_register') }}">M'enregistrer</a></li>
+            <ul class="dropdown-menu p-0 text-center" aria-labelledby="dropdownMenuLink">
+                <li><a class="dropdown-item p-2" href="{{ path('app_login') }}">
+                    <i class="fas fa-sign-out-alt"></i> Me connecter</a></li>
+                <li><a class="dropdown-item p-2" href="{{ path('front_register') }}">
+                    <i class="fas fa-save"></i> M'enregistrer</a></li>
             </ul>
             {% endif %}
         </div>
@@ -87,34 +89,34 @@
                     </a>
                     {% if app.user %}
                     <!-- Si utilisateur connecté -->
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <ul class="dropdown-menu p-0 border-0 bg-light text-center" aria-labelledby="dropdownMenuLink">
                         <li class="navitem border-bottom">
-                            <a class="dropdown-item nav-link w-50 m-auto" href="{{ path('front_profile') }}">
+                            <a class="dropdown-item nav-link" href="{{ path('front_profile') }}">
                                 <i class="fas fa-user"></i> Mon profil
                             </a>
                         </li>
                         <li class="navitem border-bottom">
-                            <a class="dropdown-item nav-link w-50 m-auto"
+                            <a class="dropdown-item nav-link"
                                 href="{{ path('submit_project', {id: app.user.id}) }}">
                                 <i class="fas fa-file-upload"></i> Soumettre mon film
                             </a>
                         </li>
                         <li class="navitem">
-                            <a class="dropdown-item nav-link w-50 m-auto" href="{{ path('app_logout') }}">
+                            <a class="dropdown-item nav-link" href="{{ path('app_logout') }}">
                                 <i class="fas fa-sign-out-alt"></i> Me déconnecter
                             </a>
                         </li>
                     </ul>
                     {% else %}
                     <!-- Si utilisateur non connecté -->
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <ul class="dropdown-menu p-0 border-0 bg-light text-center" aria-labelledby="dropdownMenuLink">
                         <li class="navitem border-bottom">
-                            <a class="dropdown-item nav-link w-50 m-auto" href="{{ path('app_login') }}">Me
-                                connecter</a>
+                            <a class="dropdown-item nav-link" href="{{ path('app_login') }}">
+                                <i class="fas fa-sign-in-alt"></i> Me connecter</a>
                         </li>
                         <li class="navitem">
-                            <a class="dropdown-item nav-link w-50 m-auto"
-                                href="{{ path('front_register') }}">M'enregistrer</a>
+                            <a class="dropdown-item nav-link" href="{{ path('front_register') }}">
+                                <i class="fas fa-save"></i> M'enregistrer</a>
                         </li>
                     </ul>
                     {% endif %}
@@ -172,7 +174,7 @@
             {% if app.user %}
             <!-- Si utilisateur connecté -->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="dropdown_account" data-toggle="dropdown" aria-haspopup="true"
+                <a href="#" class="nav-link dropdown-toggle" id="dropdown_account" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
                     <i class="fas fa-user"></i> Mon compte
                 </a>
@@ -205,7 +207,7 @@
             {% else %}
             <!-- Si utilisateur non connecté -->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="dropdown_account" data-toggle="dropdown" aria-haspopup="true"
+                <a href="#" class="nav-link dropdown-toggle" id="dropdown_account" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
                     <i class="fas fa-user"></i> Mon compte
                 </a>
