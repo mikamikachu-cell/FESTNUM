@@ -18,10 +18,10 @@
                 <p>Pour continuer, supprimez le projet précédent.</p>
             </div>
             <div class="card mb-3 m-auto w-75">
-                <div class="card-header fw-bold">Projet précédent</div>
+                <div class="card-header fw-bold text-center">Projet précédent</div>
                 <div class="card-body">
-                    <p class="card-text">titre : {{ videoFile.title }}</p>
-                    <p class="card-text">description : {{ videoFile.description }}</p>
+                    <p class="card-text">Titre : {{ videoFile.title }}</p>
+                    <p class="card-text">Description : {{ videoFile.description }}</p>
                     <a href="{{ path('delete_project', {id: app.user.id}) }}" class="btn btn-danger">Supprimer</a>
                 </div>
             </div>
