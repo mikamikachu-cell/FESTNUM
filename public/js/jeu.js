@@ -106,11 +106,10 @@ function sontEnCollision() {
     if (cigOffset <= bobineOffset + 80 && cigOffset >= bobineOffset - 50) {
         // console.log('touché')
         bobine.style.display = 'none'
-        document.querySelector('.score').innerHTML = ('Points marqués :' + 1)
-        
+        // quand l'oiseau touche la bobine cela ajoute 1 au score
+        document.getElementsByClassName('.score').innerHTML = ('Score :' + 1)
     }
 }
-
 
 let boutonDemarrer = document.querySelector('#fondBleu .fa-play-circle')
 console.log('bout', boutonDemarrer)
@@ -119,7 +118,8 @@ console.log('bout', boutonDemarrer)
 function demarrerJeu() {
     document.onkeydown = move
     boutonDemarrer.classList.add('d-none')
+    //quand la mouette dépasse l'écran on ne la voit plus
     document.body.classList.add('overflow-hidden')
 }
-
+//quand je clique sur le bouton le jeu démarre
 boutonDemarrer.addEventListener('click', demarrerJeu)
