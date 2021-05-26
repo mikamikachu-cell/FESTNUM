@@ -124,6 +124,9 @@ function demarrerJeu() {
 //quand je clique sur le bouton le jeu démarre
 boutonDemarrer.addEventListener('click', demarrerJeu)
 
-function arreteJeu{
+// function arreteJeu{
+//     if (bobine.style.display = 'none') {
 
-}
+//     }
+
+// }
