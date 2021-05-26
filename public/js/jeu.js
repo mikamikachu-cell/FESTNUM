@@ -1,9 +1,9 @@
 /* console.log("coucou"); */
 let sprite = document.querySelector('#cigogne')
 //  je récupère l'id de la cigogne
-console.log('cigogne', sprite)
-console.log('cigogne top', sprite.style.top)
-console.log('cigogne left', sprite.style.left)
+// console.log('cigogne', sprite)
+// console.log('cigogne top', sprite.style.top)
+// console.log('cigogne left', sprite.style.left)
 
 let positionX = 0
 let positionY = 0
@@ -22,6 +22,7 @@ const CLAVIER_BAS = 40
 const LARGEUR_GIF = 220
 const HAUTEUR_GIF = 200
 /* const LARGEUR_GIF_GAUCHE = -1 */
+let boutonOff = document.querySelector('.boutonOff')
 
 function move(e) {
     // e.preventDefault() // permet de désactiver le comportement par défaut du navigateur (descente dans la page / scrollbar)
@@ -103,7 +104,7 @@ function sontEnCollision() {
         bobineRect = bobine.getBoundingClientRect(),
         bobineOffset = Math.floor(bobineRect.left - bodyRect.left);
 
-    console.log(cigOffset, bobineOffset);
+    // console.log(cigOffset, bobineOffset);
     if (cigOffset <= bobineOffset + 80 && cigOffset >= bobineOffset - 50) {
         // console.log('touché')
         bobine.classList.add('d-none')
@@ -114,7 +115,7 @@ function sontEnCollision() {
 }
 
 let boutonDemarrer = document.querySelector('#fondBleu .boutonPlay')
-console.log('bout', boutonDemarrer)
+// console.log('bout', boutonDemarrer)
 // document.onkeyup = reset
 
 function demarrerJeu() {
@@ -130,6 +131,27 @@ function arreteJeu() {
     boutonDemarrer.classList.remove('display')
     document.onkeydown = null
 }
+// quand je clique sur le bouton avec la croix le jeu redemarre
+
+
+function redemarrerJeu() {
+    // console.log("restart game");
+    let bobine = document.getElementsByClassName('bobine2')[0]
+
+    // console.log(bobine);
+    bobine.classList.remove('d-none')
+    boutonDemarrer.classList.remove('d-none')
+
+    sprite.style.left = '0px'
+    sprite.style.top = '0px'
+    positionX = 0
+    positionY = 0
+    // console.log(sprite);
+
+}
+boutonOff.addEventListener('click', redemarrerJeu)
+
+
 
 
 
