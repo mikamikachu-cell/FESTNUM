@@ -16,7 +16,7 @@
 </div> -->
 
 <div id="fondBleu" class=" d-none d-md-block text-center">
-
+    <span class="score"></span>
     <a class="boutonPlay" href="#">
         <i class="far fa-play-circle"></i>
         <p class="text-white fs-5">cliquez pour jouer</p>
@@ -33,12 +33,12 @@
 
     <div class="text-center row">
         <div>
-        {% if app.user %}
-        <a href="{{ path('submit_project', {id: app.user.id}) }}">soumettre une video</a>
-        {% else %} 
-        <a href="{{ path('app_login') }}">soumettre un video kantépaco </a>    
-        {% endif %}   
-</div>
+            {% if app.user %}
+            <a href="{{ path('submit_project', {id: app.user.id}) }}">soumettre une video</a>
+            {% else %}
+            <a href="{{ path('app_login') }}">soumettre un video kantépaco </a>
+            {% endif %}
+        </div>
 
         <h2 class="col-sm-8 offset-sm-2 col-md-4 offset-md-4 bg-light py-2 mb-0 rounded-top ">Le
             festival
