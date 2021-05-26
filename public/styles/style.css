@@ -19,10 +19,24 @@ main {
 
 h2, h3, .boutonPlay {
     font-family: "crayon";
+    text-decoration: none;
 }
 
 nav a {
     font-family: "crayon";
+    text-decoration: none;
+    color: black;
+}
+
+.bouton a {
+    text-decoration: none;
+    color: #888888;
+    transition: all 0.6s;
+}
+
+.bouton:hover a {
+    background: #7c7c7c10;
+    color: #222222;
 }
 
 .active {
@@ -39,7 +53,7 @@ li {
     list-style: none;
 }
 
-body a {
+a {
     text-decoration: none;
     color: black;
 }

@@ -3,10 +3,11 @@
 {% block title %}Festnum | Profil{% endblock %}
 
 {% block content %}
+<main>
 <section class="pt-4 pb-4">
   <div class="container">
     <div class="col-lg-6 mx-auto">
-      <h2 class="text-center">Mon profil</h2>
+      <h2 class="text-center p-3">Mon profil</h2>
 
       {% if app.user %}
       <div class="card mb-3 m-auto w-75">
@@ -41,4 +42,5 @@
     </div>
   </div>
 </section>
+</main>
 {% endblock %}
