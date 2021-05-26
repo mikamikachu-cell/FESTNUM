@@ -15,19 +15,27 @@
     <img id="cigogne" src="{{ asset('ressources/cigogne2.gif') }}" alt="" class="">
 </div> -->
 
-<div id="fondBleu" class="d-none d-md-block text-center">
-    <a class="boutonPlay" href="#">
-        <i class="far fa-play-circle"></i>
-        <p class="text-white fs-5">cliquez pour jouer</p>
-    </a>
-    <a class="boutonOff" href="#"><i class="far fa-times-circle"></i></a>
+<div id="fondBleu" class="d-none d-md-block text-center row">
+    <div class="boutonPlay mt-5">
+        <a class="text-decoration-none" href="#">
+            <i class="far fa-play-circle mt-5"></i><br>
+            <p class="d-inline text-white fs-5">cliquez pour jouer</p>
+        </a>
+    </div>
+    <div class="boutonOff col-1">
+        <a class="text-decoration-none" href="#">
+            <i class="far fa-times-circle"></i>
+        </a>
+    </div>
 
     <img id="cigogne" src="{{ asset('ressources/cigogne2.gif') }}" alt="" class="">
     {# je créé une premiere bobine #}
     <img class="bobine2 col-1 " src="{{ asset('ressources/bobine.png') }}" alt="bobine de film">
     {# je créé une deuxième bobine #}
     <img class="bobine2 col-1 mr-8 " src="{{ asset('ressources/bobine.png') }}" alt="bobine de film">
-    <div class="score">score</div>
+    <div>
+        <span class="score">score</span>
+    </div>
 </div>
 
 <main class="container">
