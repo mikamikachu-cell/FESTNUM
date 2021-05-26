@@ -59,24 +59,22 @@ class SecurityController extends AbstractController
         throw new \Exception('This method can be blank - it will be intercepted by the logout key on your firewall');
     }
 
+    // Confirmation d'inscription après clic sur le lien de validation
     /**
      * @Route("/registration_confirm", name="app_registration_confirm")
      */
     public function registrationConfirm(Request $request, UserRepository $userRepository, GuardAuthenticatorHandler $guardHandler, LoginFormAuthenticator $authenticator): Response
     {
+        // Recherche de l'utilisateur à partir du token de la requête
         $token = $request->query->get('token');
         $user = $userRepository->findOneByConfirmationToken($token);
         if (null === $user) {
             throw $this->createNotFoundException(sprintf('The user with confirmation token "%s" does not exist', $token));
         }
-
+        // Modification des données utilisateur
         $user->setConfirmationToken(null);
         $user->setEnabled(true);
         $this->getDoctrine()->getManager()->flush();
-
-        // $msg = $this->translator->trans('registration.flash.confirmed', ['%user%' => $user,], 'security');
-        // $msg = 'Compte activé';
-        // $this->addFlash('success', $msg);
 
         return $guardHandler->authenticateUserAndHandleSuccess(
             $user,
@@ -84,6 +82,37 @@ class SecurityController extends AbstractController
             $authenticator,
             'main' // firewall name in security.yaml
         );
+    }
+
+    /**
+     * @Route("/reset_password/{id}", name="app_reset_password")
+     */
+    public function resetPassword(
+        Request $request,
+        UserPasswordEncoderInterface $passwordEncoder,
+        User $user = null
+    ): response {
+        if (!$user) {
+            throw new LogicException("No user selected.");
+        }
+        $form = $this->createForm(ResetPasswordFormType::class, null, [
+            'with_token' => null
+        ]);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // remplace le mdp par le nouveau mdp encodé
+            $user->setPassword($passwordEncoder->encodePassword($user, $form->get('plainPassword')->getData()));
+
+            $this->getDoctrine()->getManager()->flush();
+            $msg = 'Mot de passe modifié avec succès';
+            $this->addFlash('success', $msg);
+
+            return $this->render('front/page/profile.html.twig', []);
+        }
+        return $this->render('security/reset_password.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 
     // TODO : Fonction mot de passe oublié. Il faudra faire un ForgetPasswordFormType
@@ -110,44 +139,45 @@ class SecurityController extends AbstractController
     //     ]);
     // }
 
-    /**
-     * @Route("/reset_password/{id}", defaults={"id"=null}, name="app_reset_password")
-     */
-    public function resetPassword(
-        Request $request,
-        UserRepository $userRepository,
-        UserPasswordEncoderInterface $passwordEncoder,
-        GuardAuthenticatorHandler $guardHandler,
-        LoginFormAuthenticator $authenticator,
-        User $user = null
-    ): response {
-        if ($token = $request->query->get('token')) {
-            $user = $userRepository->findOneByConfirmationToken($token);
-            if (!$user) {
-                throw $this->createNotFoundException(sprintf('The user with confirmation token "%s" does not exist', $token));
-            }
-        } elseif (!$user) {
-            throw new LogicException("No user selected.");
-        }
-        $form = $this->createForm(ResetPasswordFormType::class, null, [
-            'with_token' => null !== $token,
-        ]);
-        $form->handleRequest($request);
+    // SAUVEGARDE METHODE CHANGEMENT MOT DE PASSE
+    // /**
+    //  * @Route("/reset_password/{id}", defaults={"id"=null}, name="app_reset_password")
+    //  */
+    // public function resetPassword(
+    //     Request $request,
+    //     UserRepository $userRepository,
+    //     UserPasswordEncoderInterface $passwordEncoder,
+    //     GuardAuthenticatorHandler $guardHandler,
+    //     LoginFormAuthenticator $authenticator,
+    //     User $user = null
+    // ): response {
+    //     if ($token = $request->query->get('token')) {
+    //         $user = $userRepository->findOneByConfirmationToken($token);
+    //         if (!$user) {
+    //             throw $this->createNotFoundException(sprintf('The user with confirmation token "%s" does not exist', $token));
+    //         }
+    //     } elseif (!$user) {
+    //         throw new LogicException("No user selected.");
+    //     }
+    //     $form = $this->createForm(ResetPasswordFormType::class, null, [
+    //         'with_token' => null !== $token,
+    //     ]);
+    //     $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $user->setPassword($passwordEncoder->encodePassword($user, $form->get('plainPassword')->getData()));
-            if ($token) {
-                $user->setConfirmationToken(null);
-            }
-            $this->getDoctrine()->getManager()->flush();
-            $msg = $this->translator->trans('Mot de passe modifié avec succès', [], 'security');
-            $this->addFlash('success', $msg);
+    //     if ($form->isSubmitted() && $form->isValid()) {
+    //         $user->setPassword($passwordEncoder->encodePassword($user, $form->get('plainPassword')->getData()));
+    //         if ($token) {
+    //             $user->setConfirmationToken(null);
+    //         }
+    //         $this->getDoctrine()->getManager()->flush();
+    //         $msg = $this->translator->trans('Mot de passe modifié avec succès', [], 'security');
+    //         $this->addFlash('success', $msg);
 
-            return $this->render('front/page/profile.html.twig', []);
-            // return $guardHandler->authenticateUserAndHandleSuccess($user, $request, $authenticator, 'main');
-        }
-        return $this->render('security/reset_password.html.twig', [
-            'form' => $form->createView(),
-        ]);
-    }
+    //         return $this->render('front/page/profile.html.twig', []);
+    //         // return $guardHandler->authenticateUserAndHandleSuccess($user, $request, $authenticator, 'main');
+    //     }
+    //     return $this->render('security/reset_password.html.twig', [
+    //         'form' => $form->createView(),
+    //     ]);
+    // }
 }
