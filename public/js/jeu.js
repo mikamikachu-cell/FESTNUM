@@ -12,6 +12,7 @@ let accelX = 0
 let accelY = 0
 sprite.style.left = positionX + 'px'
 sprite.style.top = positionY + 'px'
+let score = 0
 
 //je créé une constante pour les touches directionnelles du clavier
 const CLAVIER_DROIT = 39
@@ -26,6 +27,7 @@ function move(e) {
     // e.preventDefault() // permet de désactiver le comportement par défaut du navigateur (descente dans la page / scrollbar)
     let hitBox = document.querySelector('#fondBleu')
     let bobine = document.getElementsByClassName('bobine')
+    let bobinedeux = document.getElementsByClassName('bobine2')
 
     if (e.keyCode == CLAVIER_DROIT) {
         if (hitBox.offsetWidth < positionX + LARGEUR_GIF) {
@@ -101,17 +103,17 @@ function sontEnCollision() {
         bobineRect = bobine.getBoundingClientRect(),
         bobineOffset = Math.floor(bobineRect.left - bodyRect.left);
 
-
     console.log(cigOffset, bobineOffset);
     if (cigOffset <= bobineOffset + 80 && cigOffset >= bobineOffset - 50) {
         // console.log('touché')
-        bobine.style.display = 'none'
+        bobine.classList.add('d-none')
         // quand l'oiseau touche la bobine cela ajoute 1 au score
-        document.querySelector('.score').innerHTML = ('Score :' + 1)
+        document.querySelector('.score').innerHTML = 'score : ' + score++
+        arreteJeu()
     }
 }
 
-let boutonDemarrer = document.querySelector('#fondBleu .fa-play-circle')
+let boutonDemarrer = document.querySelector('#fondBleu .boutonPlay')
 console.log('bout', boutonDemarrer)
 // document.onkeyup = reset
 
@@ -124,9 +126,10 @@ function demarrerJeu() {
 //quand je clique sur le bouton le jeu démarre
 boutonDemarrer.addEventListener('click', demarrerJeu)
 
-// function arreteJeu{
-//     if (bobine.style.display = 'none') {
+function arreteJeu() {
+    boutonDemarrer.classList.remove('display')
+    document.onkeydown = null
+}
 
-//     }
 
-// }
+
