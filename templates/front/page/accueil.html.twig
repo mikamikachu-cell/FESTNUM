@@ -33,9 +33,9 @@
     <img class="bobine2 col-1 " src="{{ asset('ressources/bobine.png') }}" alt="bobine de film">
     {# je créé une deuxième bobine #}
     <img class="bobine2 col-1 mr-8 " src="{{ asset('ressources/bobine.png') }}" alt="bobine de film">
-    {# <div>
+    <div>
         <span class="score">score</span>
-    </div> #}
+    </div>
 </div>
 
 <main class="container">
@@ -51,9 +51,9 @@
         <h2 class="col-sm-8 offset-sm-2 col-md-4 offset-md-4 bg-light py-2 rounded-bottom">du 15 au 25 mai
             2021</h2>
 
-        <div class="bouton mt-3">
+        <div class="boutonSub mt-3">
             {% if app.user %}
-            <a class="bg-light p-2 px-3 border border-3 rounded-pill" href="{{ path('submit_project', {id: app.user.id}) }}">soumettre une video</a>
+            <a class="py-2 px-3 border border-3 rounded-pill" href="{{ path('submit_project', {id: app.user.id}) }}">soumettre une video</a>
             {% else %} 
             <a class="py-2 px-3 border border-3 rounded-pill" href="{{ path('app_login') }}">soumettre un video</a>
             {% endif %}   

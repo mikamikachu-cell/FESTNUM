@@ -54,7 +54,7 @@ function move(e) {
     }
 
     if (e.keyCode == CLAVIER_HAUT) {
-        if (positionY < -45) {
+        if (positionY < -50) {
             return
         }
         positionY -= 5
@@ -65,7 +65,7 @@ function move(e) {
     }
 
     if (e.keyCode == CLAVIER_BAS) {
-        if (positionY > 80) {
+        if (positionY > 120) {
             return
         }
         positionY -= -5
