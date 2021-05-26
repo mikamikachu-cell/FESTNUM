@@ -107,7 +107,7 @@ function sontEnCollision() {
         // console.log('touché')
         bobine.style.display = 'none'
         // quand l'oiseau touche la bobine cela ajoute 1 au score
-        document.getElementsByClassName('.score').innerHTML = ('Score :' + 1)
+        document.querySelector('.score').innerHTML = ('Score :' + 1)
     }
 }
 
@@ -123,3 +123,7 @@ function demarrerJeu() {
 }
 //quand je clique sur le bouton le jeu démarre
 boutonDemarrer.addEventListener('click', demarrerJeu)
+
+function arreteJeu{
+
+}
