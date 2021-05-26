@@ -17,7 +17,7 @@ main {
     src: url(../font/cf_crayons/CFCrayons-Regular.ttf);
 }
 
-h2, h3, .boutonPlay, {
+h2, h3, .boutonPlay {
     font-family: "crayon";
 }
 
