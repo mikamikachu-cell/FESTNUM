@@ -101,13 +101,13 @@ function sontEnCollision() {
         bobineRect = bobine.getBoundingClientRect(),
         bobineOffset = Math.floor(bobineRect.left - bodyRect.left);
 
-
     console.log(cigOffset, bobineOffset);
     if (cigOffset <= bobineOffset + 80 && cigOffset >= bobineOffset - 50) {
         // console.log('touché')
-        bobine.style.display = 'none'
+        bobine.classList.add('d-none')
         // quand l'oiseau touche la bobine cela ajoute 1 au score
         document.querySelector('.score').innerHTML = ('Score :' + 1)
+        arreteJeu()
     }
 }
 
@@ -124,9 +124,10 @@ function demarrerJeu() {
 //quand je clique sur le bouton le jeu démarre
 boutonDemarrer.addEventListener('click', demarrerJeu)
 
-// function arreteJeu{
-//     if (bobine.style.display = 'none') {
+function arreteJeu() {
+    boutonDemarrer.classList.remove('display')
+    document.onkeydown = null
+}
 
-//     }
 
-// }
+
