@@ -61,6 +61,8 @@ a {
 
 /* jeux cigogne */
 
+/* -----bouton----- */
+
 .boutonPlay {
     position: absolute;
 }
@@ -101,11 +103,7 @@ a {
     opacity: 60%;
 }
 
-/* .boutonOff i {
-    font-size: 3rem;
-    color: #ffffff;
-    opacity: 20%;
-} */
+/* -----cigogne----- */
 
 #cigogne.mirror {
     transform: scaleX(-1);
@@ -119,16 +117,6 @@ a {
     width: 250px;
     transform: scaleX(1);
 }
-
-/* .container-video {
-    position: relative;
-    overflow: hidden;
-}
-
-.video {
-    margin-bottom: -400px;
-    margin-top: -480px;
-} */
 
 #fondBleu {
     position: relative;
