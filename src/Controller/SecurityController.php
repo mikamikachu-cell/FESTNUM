@@ -87,11 +87,8 @@ class SecurityController extends AbstractController
     /**
      * @Route("/reset_password/{id}", name="app_reset_password")
      */
-    public function resetPassword(
-        Request $request,
-        UserPasswordEncoderInterface $passwordEncoder,
-        User $user = null
-    ): response {
+    public function resetPassword(Request $request, UserPasswordEncoderInterface $passwordEncoder, User $user = null): response
+    {
         if (!$user) {
             throw new LogicException("No user selected.");
         }

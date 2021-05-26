@@ -14,11 +14,11 @@
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
         </div>
         {% endif %}
+        <h2 class="text-center">Connexion</h2>
         <div class="col-lg-6 mx-auto">
             <div class="card mt-4 mb-4">
                 <div class="card-body">
-                    <form method="post">
-                        {% if app.user %}
+                    {% if app.user %}
                         {# Si l'utilisateur est connecté #}
                         <div class="mb-3">
                             <p>
@@ -29,13 +29,13 @@
                             </p>
                         </div>
                         {% else %}
-                        {# Sinon, formulaire d'authentification #}
-                        <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
+                        {# Si l'utilisateur est déconnecté, formulaire d'authentification #}
+                        <form method="post">
                         <label for="inputEmail" class="form-label">email</label>
                         <input type="email" name="email" id="inputEmail" class="form-control mb-2" required>
                         <label for="inputPassword" class="form-label">mot de passe</label>
                         <input type="password" name="password" id="inputPassword" class="form-control mb-2" required>
-                        {# Champs caché token d'authentification #}
+                        {# Champ caché token d'authentification #}
                         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
                         <div class="checkbox mb-3">
                             <label>
@@ -49,11 +49,6 @@
                         </div>
                         <hr>
                         <div class="row">
-                            {# TODO : fonction mot de passe oublié #}
-                            {# <div class="col-sm-6">
-                                <a href="{{ path('app_forget_password') }}" class="btn btn-default btn-block btn-sm">mot
-                                    de passe oublié</a>
-                            </div> #}
                             <div class="col-sm-6">
                                 <p>
                                     Si vous n'avez pas de compte <a href="{{ path('front_register')}}"
