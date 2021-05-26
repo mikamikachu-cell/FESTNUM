@@ -60,11 +60,14 @@ a {
 
 /* jeux cigogne */
 
+.boutonPlay {
+    position: absolute;
+}
+
 .boutonPlay i {
     font-size: 5rem;
     color: #ffffff;
     opacity: 20%;
-    margin-top: 100px;
 }
 
 .boutonPlay i:hover {
@@ -81,12 +84,24 @@ a {
     opacity: 1;
 }
 
+.boutonOff {
+    position: absolute;
+    margin-right: 0;
+    margin-top: 0;
+}
+
+/* .boutonOff i {
+    font-size: 3rem;
+    color: #ffffff;
+    opacity: 20%;
+} */
+
 #cigogne.mirror {
     transform: scaleX(-1);
 }
 
 #cigogne {
-    margin-top: 80px;
+    margin-top: 70px;
     position: absolute;
     top: 0;
     left: 0;
@@ -105,7 +120,18 @@ a {
 } */
 
 #fondBleu {
+    position: relative;
     height: 260px;
     background-image: url(../ressources/fond-cigogne.png);
-    margin-top: -50px;
+    margin-top: 0px;
+    animation: 3s linear infinite reverse running fondBleu;
+}
+
+@keyframes fondBleu {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 920px 0;
+    }
 }
