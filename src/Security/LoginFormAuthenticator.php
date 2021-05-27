@@ -101,13 +101,6 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
         $user->setLastLoginAt(new \DateTime());
         $this->entityManager->flush();
 
-        // $msg = $this->translator->trans('login.message.welcome', ['%user%' => $user], 'security');
-        // $msg = 'Bienvenue';
-        // $this->session->getFlashBag()->add('success', $msg);
-
-        // if ($user->hasRole('ROLE_ADMIN')) {
-        //     return new RedirectResponse($this->urlGenerator->generate('back_home'));
-        // }
         return new RedirectResponse($this->urlGenerator->generate('front_home'));
     }
 
