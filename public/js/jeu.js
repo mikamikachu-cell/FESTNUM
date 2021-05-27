@@ -141,11 +141,9 @@ function arreteJeu() {
 }
 // quand je clique sur le bouton avec la croix le jeu redemarre
 
-
 function redemarrerJeu() {
     // console.log("restart game");
     let bobine = document.getElementsByClassName('bobine2')[0]
-
     // console.log(bobine);
     bobine.classList.remove('d-none')
     boutonDemarrer.classList.remove('d-none')
@@ -157,7 +155,7 @@ function redemarrerJeu() {
     // console.log(sprite);
 
 }
-boutonOff.addEventListener('click', redemarrerJeu)
+// boutonOff.addEventListener('click', redemarrerJeu)
 
 
 
